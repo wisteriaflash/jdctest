@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>aaa</title>
+</head>
+<body>
+  
+<script src="../../lib/jquery-1.9.1.min.js"></script>
+<script>
+$(function() {
+  var data = {
+    "data": [
+      {"name": "wisteria"},
+      {"name": "lucy"}
+    ],
+    "aa": 222
+  };
+  var str = JSON.stringify(data);
+
+
+  $.ajax({
+    url: 'index.php',
+    // type: 'POST',
+    data: {type: 'save', data: str},
+    success: function(data){
+      console.log(data);
+    }
+  });
+})
+</script>
+</body>
+</html>

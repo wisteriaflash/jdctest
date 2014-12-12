@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <title></title>
+    <link rel="stylesheet" href="http://sale.jd.com/brand-misc/ui/css/m.base.css">
+    <script src="http://sale.jd.com/brand-misc/js/m/zepto.min.js"></script>
+    <script src="http://sale.jd.com/brand-misc/js/m/widget.slide.js"></script>
+</head>
+<body>
+
+<style>
+/*轮播图*/
+.slide-show .wrapper{position: relative; overflow: hidden;}
+.slide-show .bottom{position: absolute; left: 0; bottom: 7px; width: 100%; text-align: center; font-size: 0;}
+.slide-show .bottom i{display: inline-block; width: 8px; height: 8px; border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; border-radius: 8px; vertical-align: middle; margin: 0 3.5px; background-color: #fff;}
+.slide-show .bottom i.current{background-color: #e4393c;}
+.slide-show ul{position: relative; width: 9999px; overflow: hidden; -webkit-backface-visibility: hidden; -webkit-transition: -webkit-transform .3s ease-out; transition: transform .3s ease-out;}
+.slide-show li{float: left; width: 320px;}
+.slide-show li.current{}
+.slide-show a{display: block;}
+.slide-show a img{width: 100%;}
+@media screen and (width:320px){.slide-show li{width: 320px;}}
+@media screen and (width:360px){.slide-show li{width: 360px;}}
+@media screen and (width:375px){.slide-show li{width: 375px;}}
+@media screen and (width:384px){.slide-show li{width: 384px;}}
+@media screen and (width:400px){.slide-show li{width: 400px;}}
+@media screen and (width:414px){.slide-show li{width: 414px;}}
+.no-transition{-moz-transition-duration: 0s !important; -webkit-transition-duration: 0s !important; transition-duration: 0s !important;}</style>
+</style>
+
+<div class="slide-show">
+    <div class="j-module" module-function="slide" module-param="{subFunction:'transverseSlide',timer:'4000',animateDuration:'300'}" style=>
+        <div class="wrapper">
+            <ul class="j-slide-main" style="position: relative; white-space: nowrap; -webkit-transform: translate3d(0, 0px, 0px);">
+                <li >
+                    <a href="http://sale.jd.com/m/act/VAOTHqXbr6Fs.html"><img src="http://img13.360buyimg.com/popactivity/jfs/t694/189/180736712/81109/903a02b/54544262N54edae32.jpg"/></a>
+                </li>
+                <li  >
+                    <a href="http://sale.jd.com/m/act/vchHE4LVxani.html"><img src="http://img14.360buyimg.com/popactivity/jfs/t634/304/167000049/74426/c47f0b24/5453c31fN0c240c79.jpg"/></a>
+                </li>
+                <li  >
+                    <a href="http://sale.jd.com/m/act/Q5OsEPBUrKcwVf.html"><img src="http://img12.360buyimg.com/popactivity/jfs/t568/206/157077434/53693/7c31844e/5453c336Nd623010c.jpg"/></a>
+                </li>
+            </ul>
+            <div class="j-slide-sub bottom">
+                <i  class="current" ></i>
+                <i ></i>
+                <i ></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

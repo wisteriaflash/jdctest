@@ -20,7 +20,7 @@ module.exports = function (grunt) {
                 options: {
                   livereload: true
                 },
-                files: ['2014/**/*']
+                files: ['jdcsign/**/*']
             }
         }
     });

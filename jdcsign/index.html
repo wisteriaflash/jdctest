@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JDC - 生成签名</title>
+  <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+  <link rel="stylesheet" href="asset/style.css">
+</head>
+<body>
+
+<div class="wrapper">
+  <h2 class="title">JDC - 生成签名</h2>
+  <!--S preveiw -->
+  <div class="preview clearfix">
+    <h4>预览样式</h4>
+    <span class="col-sm-2"></span>
+    <div class="col-sm-10">
+      <div class="sign-content clearfix">
+        <div class="user">
+          <div class="avatar">
+            <span class="mask"></span>
+            <span class="team-icon icon-vd"></span>
+            <img src="upload/b.jpg" width="75" alt="头像">
+          </div>
+          <div class="team">
+            <p class="name">
+              <span class="en">name</span>
+              <span class="zh">中文名</span>
+            </p>
+            <p class="team-type">设计组</p>
+            <p class="logo"></p>
+          </div>
+        </div>
+        <div class="info">
+          <p class="mood">“<em>一句话心情</em>”</p>
+          <p class="tel">
+            <span><i class="icon-phone"></i><em class="phone-num">123-4567-8901</em></span>
+            <span><i class="icon-tel"></i><em class="tel-num">021-50808054</em></span>
+          </p>
+          <p class="online">
+            <span><i class="icon-qq"></i><em class="qq-num">123456789</em></span>
+            <span><i class="icon-weixin"></i><em class="weixin-num">123456789</em></span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--E preveiw -->
+
+  <!--S edit -->
+  <div class="edit form-horizontal">
+    <h4>编辑签名</h4>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">上传头像：</label>
+      <div class="col-sm-10">
+        <span class="btn btn-default upload-button">
+          <i class="glyphicon glyphicon-plus"></i>
+          <span>上传图片</span>
+          <input class="file_image file" id="upload_image" name="upload_image" type="file">
+        </span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">姓名：</label>
+      <div class="col-sm-10">
+        <input type="text" data-preview=".name .zh" class="form-control" placeholder="请输入姓名">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">英文名：</label>
+      <div class="col-sm-10">
+        <input type="text" data-preview=".name .en" class="form-control" placeholder="请输入英文名">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">所属小组：</label>
+      <div class="col-sm-10">
+        <input type="text" data-preview=".team-type" class="form-control" placeholder="请输入所属小组">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">职位：</label>
+      <div class="col-sm-10">
+        <select id="J_teamType" class="form-control">
+          <option value="icon-vd">视觉设计</option>
+          <option value="icon-ud">交互设计</option>
+          <option value="icon-fd">前端开发</option>
+          <option value="icon-ur">用户调研</option>
+          <option value="icon-pm">产品</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">一句话心情：</label>
+      <div class="col-sm-10">
+        <input type="text" data-preview=".mood em" class="form-control" placeholder="请输入一句话心情">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">手机：</label>
+      <div class="col-sm-10">
+        <input type="text" data-preview=".phone-num" class="form-control" placeholder="请输入手机号">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">固定电话：</label>
+      <div class="col-sm-10">
+        <input type="text" data-preview=".tel-num" class="form-control" placeholder="请输入固定电话">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">QQ：</label>
+      <div class="col-sm-10">
+        <input type="text" data-preview=".qq-num" class="form-control" placeholder="请输入QQ号">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">微信号：</label>
+      <div class="col-sm-10">
+        <input type="text" data-preview=".weixin-num" class="form-control" placeholder="请输入微信号">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <a id="J_getSignImg" class="btn btn-primary btn-lg btn-block">生成签名</a>
+      </div>
+    </div>
+  </div>
+  <!--E edit -->
+</div>
+
+
+<script src="../lib/jquery-1.9.1.min.js"></script>
+<script src="asset/jquery.ui.widget.js"></script>
+<script src="asset/jquery.fileupload.js"></script>
+<script src="asset/edit.js"></script>
+</body>
+</html>

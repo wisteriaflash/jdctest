@@ -1,0 +1,74 @@
+/*main*/
+.wrapper{width: 800px; margin: 0 auto;}
+.wrapper .title{text-align: center; color: #CB1C2A; font-weight: bold;}
+
+/*opt*/
+.result, .preview{padding: 10px 0 20px;}
+.result{padding-bottom: 0;}
+.result h4, .preview h4, .edit h4{text-align: center; font-weight: bold;}
+.edit{clear: both;}
+.edit h4{padding-bottom: 10px;}
+
+
+/*sprite*/
+.sign-content .user .avatar .team-icon,
+.sign-content .user .team .logo,
+.sign-content .info span i
+{background: url(sprite.png) no-repeat;}
+
+/*sign*/
+.sign-content p{margin-bottom: 0;}
+.sign-content{border: 1px solid #CCC; padding: 10px; font-family: "Microsoft YaHei",arial;}
+.sign-content .user{min-width: 210px; float: left; border-right: 1px solid #D6D6D6; padding-right: 10px;}
+.sign-content .user .avatar{width: 75px; height: 75px; float: left; position: relative; margin-right: 20px;}
+.sign-content .user .avatar .mask{position: absolute; left: 0; top: 0; background: url(mask.png) no-repeat; display: block; width: 75px; height: 75px;}
+.sign-content .user .avatar .team-icon{position: absolute; right: 0px; bottom: 0px; width: 22px; height: 22px; display: block;}
+.sign-content .user .avatar .icon-ud{background-position: -25px 0;}
+.sign-content .user .avatar .icon-fd{background-position: -50px 0;}
+.sign-content .user .avatar .icon-pm{background-position: -75px 0;}
+.sign-content .user .avatar .icon-ur{background-position: -100px 0;}
+
+.sign-content .user .team{float: left;}
+.sign-content .user .team .name{margin-top: 10px; margin-bottom: 2px; color: #000;}
+.sign-content .user .team .name .en{display: inline-block; margin-right: 5px; font-weight: bold;}
+.sign-content .user .team .team-type{font-size: 12px; color: #CB1C2A; min-height: 17px;}
+.sign-content .user .team .logo{width: 101px; height: 15px; background-position: 0 -25px; margin-top: 7px; margin-left: -2px;}
+
+
+/*sign-info*/
+.sign-content .info{min-width: 340px; float: left; font-size: 12px; color: #222; padding-left: 20px;}
+.sign-content .info em{font-style: normal;}
+.sign-content .info span{display: inline-block; width: 140px;}
+.sign-content .info span i{width: 8px; height: 12px; background-position: 0 -45px; display: inline-block; margin-right: 8px;}
+.sign-content .info span .icon-tel{width: 13px; background-position: -10px -45px; position: relative; top: 2px;}
+.sign-content .info span .icon-qq{width: 10px; background-position: -25px -45px;}
+.sign-content .info span .icon-weixin{width: 13px; background-position: -40px -45px; position: relative; top: 3px;}
+.sign-content .info .mood{color: #333; margin-top: 5px; margin-bottom: 7px; font-size: 14px; margin-left: -5px;}
+.sign-content .info .tel{margin-bottom: 5px;}
+
+
+/*upload style*/
+.upload-button {
+  position: relative;
+  overflow: hidden;
+}
+.upload-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  -ms-filter: 'alpha(opacity=0)';
+  font-size: 200px;
+  direction: ltr;
+  cursor: pointer;
+}
+
+/* Fixes for IE < 8 */
+@media screen\9 {
+  .upload-button input {
+    filter: alpha(opacity=0);
+    font-size: 100%;
+    height: 100%;
+  }
+}
