@@ -78,7 +78,7 @@ $(function(){
       var node = $('.result');
       if(node.length == 0){
         node = $('<div class="result clearfix">'+
-                  '<h4>生成图片</h4>'+
+                  '<h4>生成图片<em>（在下方图片上点击右键“保存”即可）</em></h4>'+
                   '<span class="col-sm-2"></span>'+
                   '<div class="col-sm-10"><img src="'+url+'"></div>'+
               '</div>');
