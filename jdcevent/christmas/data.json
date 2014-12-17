@@ -1,1 +1,1 @@
-{"data":[{"name":"wisteria"},{"name":"lucy"}],"aa":222}
+{"winners":3,"lottery":[0,3,4,5],"items":[{"index":0,"name":"wisteria","avatar":"pic\/8.jpg","giftforID":-1},{"index":1,"name":"lucy2","avatar":"pic\/1.jpg","giftforID":6},{"index":2,"name":"lucy3","avatar":"pic\/2.jpg","giftforID":2},{"index":3,"name":"lucy4","avatar":"pic\/3.jpg","giftforID":-1},{"index":4,"name":"lucy5","avatar":"pic\/4.jpg","giftforID":-1},{"index":5,"name":"lucy6","avatar":"pic\/5.jpg","giftforID":1},{"index":6,"name":"lucy7","avatar":"pic\/6.jpg","giftforID":-1}]}

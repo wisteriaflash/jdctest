@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>圣诞换礼大爬梯</title>
+  <link rel="stylesheet" href="asset/style.css">
+</head>
+<body>
+
+<!--S wrapper -->
+<div class="wrapper">
+  <!--S content -->
+  <div class="content">
+    <!--S mainbg -->
+    <div class="mainbg">
+      <span class="toptitle"></span>
+      <span id="J_rule" class="rule"></span>
+      <span class="ball"></span>
+      <span class="star1"></span><span class="star2"></span>
+      <div class="snow">
+        <span class="snow1"></span><span class="snow2"></span>
+        <span class="snow3"></span><span class="snow4"></span>
+        <span class="snow5"></span>
+      </div>
+    </div>
+    <!--E mainbg -->
+    <div class="title">
+      <img src="asset/title.png" width="100%" alt="">
+    </div>
+    <!--S middle -->
+    <div class="middle">
+      <span class="light"></span>
+      <div class="con">
+        <span class="mask"></span>
+        <div id="J_avatar" class="avatar">
+          <ul class="dn">
+            <li><img src="pic/0.jpg" alt=""></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--E middle -->
+    <div id="J_bottom" class="bottom">
+      <img class="pic" src="asset/bottom.png" width="100%" alt="">
+      <div class="btn">
+        <span class="start"></span>
+        <span class="playing dn">
+          <em class="num num1"></em>
+        </span>
+      </div>
+      <div class="result">
+          TA被你认领了<br>快为TA准备礼物吧!
+      </div>
+      <span class="txt">已有<em class="num">x</em>位小伙伴被领走</span>
+    </div>
+  </div>
+  <!--E content -->
+  <div class="overlay"></div>
+  <!--S popup -->
+  <div id="J_popup" class="popup">
+    <div id="J_login" class="login-popup">
+      <img src="asset/login.png" width="100%" alt="">
+      <div class="info">
+        <div class="name">
+          <input type="text" placeholder="输入姓名认领小伙伴哦">  
+        </div>
+        <span class="msg"></span>
+        <span class="btn-submit">确定</span>
+      </div>
+    </div>
+    <div class="rule-popup">
+      <span class="btn-close"></span>
+      <img src="asset/rule.png" width="100%" alt="">
+    </div>
+  </div>
+  <!--E popup -->
+</div>
+<!--E wrapper -->
+
+
+
+
+  
+<script src="../../lib/zepto.min.js"></script>
+<script src="../../lib/zepto.cookie.min.js"></script>
+<script src="asset/lottery.js"></script>
+</body>
+</html>
