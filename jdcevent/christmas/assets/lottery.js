@@ -217,6 +217,7 @@ var lottery = {
         $('#J_avatar img').first().attr('src', imgurl);
         $('#J_bottom .btn').addClass('dn');
         $('#J_bottom .result').fadeIn();
+        $('#J_bottom .result .giftfor-name').text(result.name);
         $('.light').addClass('animate');
     },
     shuffleArray: function(array) {//utils-shuffle
@@ -287,12 +288,21 @@ var generateData = {
     generateArray: function(){
         var me = this;
         var arr1 = [];
+        var nameArr = ["chilton","朱帅","Ada","BoBo","gina","Hee","kk","lan","Melody","only","Peter","samshang","shady","Vivienne","Yvn小胡","陈蕾","陈巧","大宾","大黄","丁丁","多多","胡伟伟","姜敬国","金璐","咖喱","李佳奇","聂孝","沙沙","万苇","王陈琳","魏丽华","武艺嫱","潇潇","小王子","于奇","张莹莹","周雪妮"];
+        var obj;
         for(var i=0; i<me.maxNum; i++){
             arr1.push(i);
+            obj = {
+                "index": i,
+                "name": nameArr[i],
+                "avatar": "pic2\/"+i+".jpg",
+                "giftforID": -1
+              }
+            me.tempArr.push(obj);
         }
-        console.log(arr1);
+        console.log(JSON.stringify(me.tempArr));
     }
 };
-generateData.init();
+// generateData.init();
 
 });

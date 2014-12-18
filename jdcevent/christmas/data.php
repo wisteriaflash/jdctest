@@ -37,6 +37,9 @@
     $lotteryArr = $jsonArray->lottery;
     if(count($lotteryArr)>0){
       $rand_key = array_rand($lotteryArr);
+      while ($rand_key == $index) {
+        $rand_key = array_rand($lotteryArr);
+      }
       $rand_value = $lotteryArr[$rand_key];
       unset($lotteryArr[$rand_key]);
       

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
   <title>圣诞换礼大爬梯</title>
-  <link rel="stylesheet" href="asset/style.css">
+  <link rel="stylesheet" href="assets/style.css?v1559845">
 </head>
 <body>
 
@@ -26,7 +26,7 @@
     </div>
     <!--E mainbg -->
     <div class="title">
-      <img src="asset/title.png" width="100%" alt="">
+      <img src="assets/title.png" width="100%" alt="">
     </div>
     <!--S middle -->
     <div class="middle">
@@ -42,7 +42,7 @@
     </div>
     <!--E middle -->
     <div id="J_bottom" class="bottom">
-      <img class="pic" src="asset/bottom.png" width="100%" alt="">
+      <img class="pic" src="assets/bottom.png" width="100%" alt="">
       <div class="btn">
         <span class="start"></span>
         <span class="playing dn">
@@ -50,40 +50,42 @@
         </span>
       </div>
       <div class="result">
-          TA被你认领了<br>快为TA准备礼物吧!
+        <p class="giftfor-name">XX</p>
+        <p>被你认领了<br>快为TA准备礼物吧!</p>
       </div>
       <span class="txt">已有<em class="num">x</em>位小伙伴被领走</span>
     </div>
   </div>
   <!--E content -->
-  <div class="overlay"></div>
-  <!--S popup -->
-  <div id="J_popup" class="popup">
-    <div id="J_login" class="login-popup">
-      <img src="asset/login.png" width="100%" alt="">
-      <div class="info">
-        <div class="name">
-          <input type="text" placeholder="输入姓名认领小伙伴哦">  
-        </div>
-        <span class="msg"></span>
-        <span class="btn-submit">确定</span>
-      </div>
-    </div>
-    <div class="rule-popup">
-      <span class="btn-close"></span>
-      <img src="asset/rule.png" width="100%" alt="">
-    </div>
-  </div>
-  <!--E popup -->
 </div>
 <!--E wrapper -->
+
+<div class="overlay"></div>
+<!--S popup -->
+<div id="J_popup" class="popup">
+  <div id="J_login" class="login-popup">
+    <img src="assets/login.png" width="100%" alt="">
+    <div class="info">
+      <div class="name">
+        <input type="text" placeholder="输入姓名认领小伙伴哦">  
+      </div>
+      <span class="msg"></span>
+      <span class="btn-submit">确定</span>
+    </div>
+  </div>
+  <div class="rule-popup">
+    <span class="btn-close"></span>
+    <img src="assets/rule.png" width="100%" alt="">
+  </div>
+</div>
+<!--E popup -->
 
 
 
 
   
-<script src="../../lib/zepto.min.js"></script>
-<script src="../../lib/zepto.cookie.min.js"></script>
-<script src="asset/lottery.js"></script>
+<script src="lib/zepto.min.js"></script>
+<script src="lib/zepto.cookie.min.js"></script>
+<script src="assets/lottery.js"></script>
 </body>
 </html>
