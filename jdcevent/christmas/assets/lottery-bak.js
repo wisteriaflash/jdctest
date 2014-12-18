@@ -72,8 +72,8 @@ var lottery = {
             if(me.userObj.giftforID != -1){
                 me.showLotteryResult(me.userObj.giftforID);
             }else{
-                me.renderItemsList();
                 $('#J_bottom .btn').fadeIn();
+                me.renderItemsList();   //preRender
             }
         }
         //lottery-start
@@ -83,7 +83,6 @@ var lottery = {
             }
             //vars
             $('#J_avatar').addClass('no-default');
-            $('#J_bottom .btn').removeClass('animate');
             $('#J_bottom .btn span').addClass('dn');
             $('#J_bottom .playing').removeClass('dn');
             me.isPlaying = true;
@@ -113,18 +112,6 @@ var lottery = {
                 me.dataObj = data;
                 me.bakDataObj = $.extend(true, {}, data);
                 me.initRenderData();
-                me.switchStatus();
-
-                //for test
-                var arr = [], item;
-                var items = data.items;
-                for(var i=0, len = items.length; i<len; i++){
-                    item = items[i];
-                    if(item.giftforID != -1){
-                        arr.push(item.giftforID);    
-                    }
-                }
-                // console.log(arr);
             }
         });
     },
@@ -137,7 +124,6 @@ var lottery = {
                 if(data.status == 'success'){
                     me.userObj.giftforID = data.giftforID;
                     me.dataObj.winners++;
-                    me.setUserCookie();
                 }else{
                     alert(data.msg);
                 }
@@ -153,6 +139,7 @@ var lottery = {
         me.itemsStop();
         me.showLotteryResult(me.userObj.giftforID);
         me.initRenderData();
+        me.setUserCookie();
     }, 
     //cookie
     getUserCookie: function(){
@@ -189,9 +176,6 @@ var lottery = {
     renderItemsList: function(){
         var me = this;
         var listNode = $('#J_avatar ul');
-        if(!me.bakDataObj){
-            return;
-        }
         var randomArr = me.shuffleArray(me.bakDataObj.items);
         var node, item;
         listNode.html('');
@@ -230,8 +214,6 @@ var lottery = {
         $('#J_avatar').addClass('no-default');
         $('#J_avatar ul').attr('style', '')
                         .removeClass('dn');
-        var first = $('#J_avatar ul li').first();
-        $('#J_avatar li').not(first).hide();
         $('#J_avatar img').first().attr('src', imgurl);
         $('#J_bottom .btn').addClass('dn');
         $('#J_bottom .result').fadeIn();
@@ -255,17 +237,7 @@ var other = {
     touchEvent: 'tap',
     init: function(){
         var me = this;
-        me.switchOS();
         me.bindHandler();
-    },
-    switchOS: function(){
-        var me = this;
-        var version = parseInt($.os.version);
-        if($.os.android && version<4){//system
-            $('.wrapper .title').removeClass('animate');
-            $('.wrapper .middle').removeClass('animate');
-            $('.wrapper .bottom').removeClass('animate');
-        }
     },
     bindHandler: function(){
         var me = this;
@@ -273,7 +245,7 @@ var other = {
             var cls = $(this).attr('class');
             me.showPopup(cls);
             //test
-            // lottery.cleanUserCookie();
+            lottery.cleanUserCookie();
         });
         $('.overlay').on(me.touchEvent, function(e){
             var popNode = $('#J_popup');
@@ -302,6 +274,35 @@ var other = {
 //init
 lottery.init();
 other.init();
+
+
+//forTest
+var generateData = {
+    maxNum: 37,
+    tempArr: [],
+    init: function(){
+        var me = this;
+        me.generateArray();
+    },
+    generateArray: function(){
+        var me = this;
+        var arr1 = [];
+        var nameArr = ["chilton","朱帅","Ada","BoBo","gina","Hee","kk","lan","Melody","only","Peter","samshang","shady","Vivienne","Yvn小胡","陈蕾","陈巧","大宾","大黄","丁丁","多多","胡伟伟","姜敬国","金璐","咖喱","李佳奇","聂孝","沙沙","万苇","王陈琳","魏丽华","武艺嫱","潇潇","小王子","于奇","张莹莹","周雪妮"];
+        var obj;
+        for(var i=0; i<me.maxNum; i++){
+            arr1.push(i);
+            obj = {
+                "index": i,
+                "name": nameArr[i],
+                "avatar": "pic2\/"+i+".jpg",
+                "giftforID": -1
+              }
+            me.tempArr.push(obj);
+        }
+        console.log(JSON.stringify(me.tempArr));
+    }
+};
+// generateData.init();
 
 
 });
