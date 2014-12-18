@@ -113,8 +113,12 @@ var lottery = {
                 me.dataObj = data;
                 me.bakDataObj = $.extend(true, {}, data);
                 me.initRenderData();
+                //updateData
+                if(me.userObj){
+                    me.userObj = me.dataObj.items[me.userObj.index];
+                    me.setUserCookie();
+                }
                 me.switchStatus();
-
                 //for test
                 var arr = [], item;
                 var items = data.items;
