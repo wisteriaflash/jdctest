@@ -1,6 +1,6 @@
 <?php
   //vars
-  $fileName = 'data.json';
+  $fileName = 'data-online.json';
   
   //switch
   $type = isset($_GET['type']) ? $_GET['type'] : '';
@@ -32,10 +32,13 @@
     $jsonData = file_get_contents($GLOBALS['fileName']);
     $jsonArray = json_decode($jsonData);
 
+    //item
+    $item = $jsonArray->items[$index];
+
 
     //lotteryArr
     $lotteryArr = $jsonArray->lottery;
-    if(count($lotteryArr)>0){
+    if(count($lotteryArr)>0 && $item->giftforID == -1){
       $rand_key = array_rand($lotteryArr);
       while ($rand_key == $index) {
         $rand_key = array_rand($lotteryArr);

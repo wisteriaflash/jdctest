@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>圣诞换礼大爬梯 - 名单</title>
+  <style>
+  *{margin: 0; padding: 0;}
+  body{background-image: none; counter-reset: mycounter;}
+  .page-index{width: 800px; padding-top: 20px; margin: 0 auto;}
+  .page-index h2{text-align: center; font-size: 24px; margin-bottom: 30px;}
+  .page-index .con{text-align: center; width: 800px;}
+  .page-index ol{list-style: none; display: inline-block;}
+  .page-index li{margin-bottom: 15px; padding: 0 8px; float: left; width: 260px; text-align: left;}
+  .page-index li:before{counter-increment: mycounter; content: counter(mycounter)'. ';  font-size: 18px;}
+  .page-index li .from{display: inline-block; width: 60px;}
+  .page-index li:nth-child(odd){clear: left;}
+  </style>
+</head>
+<body>
+  <div class="page-index">
+    <h2>圣诞换礼大爬梯 - 名单</h2>
+    <div class="con">
+      <ol id="J_result"></ol>  
+    </div>
+  </div>
+
+<script src="lib/zepto.min.js"></script>
+<script>
+$(function(){
+  var result = {
+    getLotteryData: function(){
+        var me = this;
+        $.ajax({
+            url: 'data.php',
+            data: {type: 'get'},
+            success: function(data){
+              console.log(data);
+              me.renderResult(data.items);
+            }
+        });
+    },
+    renderResult: function(arr){
+      var me = this;
+      var listNode = $('#J_result');
+      var item, giftUser, node
+      for(var i=0, len=arr.length; i<len; i++){
+        item = arr[i];
+        giftUser = arr[item.giftforID];
+        node = $('<li><span class="from">'+item.name+'</span>  -------&gt;  '+giftUser.name+'</li>');
+        listNode.append(node);
+      }
+    }
+  };
+
+  //init
+  result.getLotteryData();
+});
+</script>
+</body>
+</html>

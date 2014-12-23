@@ -24,7 +24,7 @@ var lottery = {
         me.getjsonData();
         //animate
         setTimeout(function(){
-            me.switchStatus();
+            me.switchStatus(false);
         }, 600);
     },
     initRenderData: function(){
@@ -49,7 +49,7 @@ var lottery = {
                     other.hidePopup();
                     me.userObj = me.dataObj.items[userIndex];
                     me.setUserCookie();
-                    me.switchStatus();
+                    me.switchStatus(true);
                     $('#J_login input').blur();
                     document.activeElement.blur();  //bugfix-hide keyboard
                 }else{
@@ -59,12 +59,12 @@ var lottery = {
             }
         });
     },
-    switchStatus: function(){
+    switchStatus: function(sign){
         var me = this;
         //login
         if(!me.userObj){//nologin
             other.showPopup('login');
-        }else{
+        }else if(sign){
             //for test
             // $('#J_login input').val('wisteria');
             // $('#J_login .btn-submit').trigger('tap');
@@ -118,7 +118,7 @@ var lottery = {
                     me.userObj = me.dataObj.items[me.userObj.index];
                     me.setUserCookie();
                 }
-                me.switchStatus();
+                me.switchStatus(true);
                 //for test
                 var arr = [], item;
                 var items = data.items;
@@ -143,7 +143,12 @@ var lottery = {
                     me.dataObj.winners++;
                     me.setUserCookie();
                 }else{
-                    alert(data.msg);
+                    me.itemsStop();
+                    clearInterval(me.timeID);
+                    $('#J_bottom .btn').addClass('dn');
+                    $('#J_avatar').removeClass('no-default');
+                    $('#J_avatar ul').addClass('dn');
+                    alert(data.msg+",请刷新重试");
                 }
             }
         });

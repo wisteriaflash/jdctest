@@ -203,11 +203,12 @@ a:focus,input:focus{
 
 
 /*popup*/
-.popup{position: absolute; left: 0; top: 0; width:100%; z-index: 100; 
+.popup{position: absolute; left: 0; top: 0; width:100%; z-index: 100; opacity: 0;
   -webkit-transform: translateY(-100%);
   -webkit-transition: all .4s ease;
 }
 .popup.animate{
+  opacity: 1;
   -webkit-transform: translateY(0px);
 }
 .login-popup{display: none;}
