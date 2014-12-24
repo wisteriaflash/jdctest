@@ -20,7 +20,7 @@ module.exports = function (grunt) {
                 options: {
                   livereload: true
                 },
-                files: ['jdcsign/**/*']
+                files: ['jdcevent/**/*','jdcsign/**/*','!jdcsign/pic/**', '!jdcsign/result.html']
             }
         }
     });

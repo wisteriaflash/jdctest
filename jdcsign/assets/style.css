@@ -15,6 +15,10 @@
 .result h4, .preview h4, .edit h4{text-align: center; font-weight: bold;}
 .edit{clear: both;}
 .edit h4{padding-bottom: 10px;}
+.edit .avatar-group{margin-left: 10px;}
+.edit .avatar-default{min-width: 320px;}
+.edit .avatar-default img{display: inline-block; cursor: pointer;}
+
 .result h4{position: relative;}
 .result h4 em{font-size: 12px; font-style: normal; padding-left: 5px; color: #CB1C2A; font-weight: normal; position: absolute; right: 0; top: 0;}
 .result h4 em:before{content: ''; display: inline-block; background-position: -105px -25px; width: 20px; height: 12px; position: relative; top: 3px;

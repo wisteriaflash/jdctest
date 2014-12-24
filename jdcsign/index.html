@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>JDC - 生成签名</title>
-  <link rel="stylesheet" href="asset/css/bootstrap.min.css">
-  <link rel="stylesheet" href="asset/style.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
@@ -20,7 +20,7 @@
           <div class="avatar">
             <span class="mask"></span>
             <span class="team-icon icon-vd"></span>
-            <img src="upload/b.jpg" width="75" alt="头像">
+            <img src="assets/default/1.png" width="75" alt="头像">
           </div>
           <div class="team">
             <p class="name">
@@ -51,13 +51,37 @@
   <div class="edit form-horizontal">
     <h4>编辑签名</h4>
     <div class="form-group">
-      <label class="col-sm-2 control-label">上传头像：</label>
+      <label class="col-sm-2 control-label">个人头像：</label>
       <div class="col-sm-10">
         <span class="btn btn-default upload-button">
           <i class="glyphicon glyphicon-plus"></i>
-          <span>上传图片</span>
+          <span>上传头像</span>
           <input class="file_image file" id="upload_image" name="upload_image" type="file">
         </span>
+        <div class="btn-group avatar-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            系统头像 <span class="caret"></span>
+          </button>
+          <ul id="J_avatarDefault" class="dropdown-menu avatar-default" role="menu">
+            <li>
+              <img src="assets/default/1.png" alt="">
+              <img src="assets/default/2.png" alt="">
+              <img src="assets/default/3.png" alt="">
+              <img src="assets/default/4.png" alt="">
+            </li>
+            <li>
+              <img src="assets/default/5.png" alt="">
+              <img src="assets/default/6.png" alt="">
+              <img src="assets/default/7.png" alt="">
+              <img src="assets/default/8.png" alt="">
+            </li>
+           <li>
+              <img src="assets/default/9.png" alt="">
+              <img src="assets/default/10.png" alt="">
+              <img src="assets/default/11.png" alt="">
+              <img src="assets/default/12.png" alt="">
+          </ul>
+        </div>
       </div>
     </div>
     <div class="form-group">
@@ -130,9 +154,9 @@
 </div>
 
 
-<script src="../lib/jquery-1.9.1.min.js"></script>
-<script src="asset/jquery.ui.widget.js"></script>
-<script src="asset/jquery.fileupload.js"></script>
-<script src="asset/edit.js"></script>
+<script src="assets/jquery-1.9.1.min.js"></script>
+<script src="assets/jquery.ui.widget.js"></script>
+<script src="assets/jquery.fileupload.js"></script>
+<script src="assets/edit.js"></script>
 </body>
 </html>

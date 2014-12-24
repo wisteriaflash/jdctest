@@ -30,7 +30,8 @@ if ($errMsg > 0){
     $y = 0;
     imagecopyresampled($new_image, $src, 0, 0, $x, $y, $final_width, $final_height, $imgW, $imgH);
     //输出图片
-    $outImg = "upload/file.jpg";
+    $time =time();
+    $outImg = "upload/".$time.".jpg";
     imagejpeg ($new_image, $outImg, 80);
     //result
     $result = array('status'=>'success','url'=> $outImg);

@@ -49,8 +49,9 @@ $(function(){
           done: function(e, data){
               var result = data.result;
               if(result.status == 'success'){
-                var time = new Date().getTime();
-                $('.avatar img').attr("src",result.url+"?t="+time);
+                me.renderAvatar(result.url);
+                // var time = new Date().getTime();
+                // $('.avatar img').attr("src",result.url+"?t="+time);
               }else{
                 alert(result.msg);
               }
@@ -59,6 +60,30 @@ $(function(){
               $('#upload_image').show();
           }
       });
+      //avatar-default
+      $('#J_avatarDefault img').on('click', function(){
+        var url = $(this).attr('src');
+        me.renderAvatar(url);
+      });
+      //commponent
+      $('.dropdown-toggle').on('click', function(){
+        var parent = $(this).parent();
+        var toggle = $(this).attr('data-toggle');
+        var menuNode = parent.find('.'+toggle+'-menu');
+        menuNode.toggle();
+      });
+      $('body').on('click', function(e){
+        var target = $(e.target);
+        if(target.hasClass('dropdown-toggle') || $(e.target).parents('.btn').length>0){
+          return;
+        }else{
+          $('.dropdown-menu').hide();
+        }
+      });
+    },
+    renderAvatar: function(url){
+      var time = new Date().getTime();
+      $('.avatar img').attr("src",url+"?t="+time);
     },
     generateImg: function(){
       var me = this;
