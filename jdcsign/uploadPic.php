@@ -24,6 +24,8 @@ if ($errMsg > 0){
     }
     //scale img
     $new_image = imagecreatetruecolor($width, $height);
+    $color = imagecolorallocate($new_image, 255, 255, 255);
+    imagefill($new_image, 0,0, $color);
     //crop img
     //裁剪开区域左上角的点的坐标
     $x = 0;
@@ -32,7 +34,7 @@ if ($errMsg > 0){
     //输出图片
     $time =time();
     $outImg = "upload/".$time.".jpg";
-    imagejpeg ($new_image, $outImg, 80);
+    imagejpeg ($new_image, $outImg, 90);
     //result
     $result = array('status'=>'success','url'=> $outImg);
 }

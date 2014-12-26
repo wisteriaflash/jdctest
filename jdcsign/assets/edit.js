@@ -16,11 +16,27 @@ $(function(){
         var preveiwNode = $('.preview '+preStr);
         preveiwNode.text(data);
       });
-      //teamType
-      $('#J_teamType').on('change',function(){
+      //jobType
+      $('#J_jobType').on('change',function(){
         var cls = $(this).val();
         cls = 'team-icon '+cls;
         $('.team-icon').attr('class', cls);
+      });
+      //teamType
+      $('#J_teamType').on('change',function(){
+        var str = $(this).find('option:selected').text();
+        $('.team-type').text(str);
+      });
+      $('#J_teamOther input:checkbox').on('change', function(){
+        var check = $(this).prop('checked');
+        $('#J_teamType').prop('disabled', check);
+        $('#J_teamOther input:text').prop('disabled', !check);
+        //data
+        if(check){
+          $('#J_teamOther input:text').trigger('propertychange');
+        }else{
+          $('#J_teamType').change();
+        }
       });
       //generate
       $('#J_getSignImg').on('click', function(e){

@@ -1,6 +1,6 @@
 /*main*/
-.wrapper{width: 800px; margin: 0 auto;}
-.wrapper .title{text-align: center; color: #CB1C2A; font-weight: bold;}
+.title{height: 50px; background-color: #E4393C; line-height: 45px;}
+.wrapper, .title .con{width: 800px; margin: 0 auto;}
 
 /*sprite*/
 .sign-content .user .avatar .team-icon,
@@ -16,7 +16,8 @@
 .edit{clear: both;}
 .edit h4{padding-bottom: 10px;}
 .edit .avatar-group{margin-left: 10px;}
-.edit .avatar-default{min-width: 320px;}
+.edit .avatar-default{min-width: 340px;}
+.edit .avatar-default li{padding: 0 10px 10px;}
 .edit .avatar-default img{display: inline-block; cursor: pointer;}
 
 .result h4{position: relative;}
@@ -32,7 +33,7 @@
 
 /*sign*/
 .sign-content p{margin-bottom: 0;}
-.sign-content{border: 1px solid #CCC; padding: 10px; font-family: "Microsoft YaHei",arial;}
+.sign-content{border: 1px solid #CCC; padding: 10px; font-family: "Microsoft YaHei",arial; width: 600px;}
 .sign-content .user{min-width: 210px; float: left; border-right: 1px solid #D6D6D6; padding-right: 10px;}
 .sign-content .user .avatar{width: 75px; height: 75px; float: left; position: relative; margin-right: 20px;}
 .sign-content .user .avatar .mask{position: absolute; left: 0; top: 0; background: url(mask.png) no-repeat; display: block; width: 75px; height: 75px;}
@@ -59,6 +60,7 @@
 .sign-content .info span .icon-weixin{width: 13px; background-position: -40px -45px; position: relative; top: 3px;}
 .sign-content .info .mood{color: #333; margin-top: 5px; margin-bottom: 7px; font-size: 14px; margin-left: -5px;}
 .sign-content .info .tel{margin-bottom: 5px;}
+.sign-content .info .tel .info-long{width: 180px;}
 
 
 /*upload style*/
