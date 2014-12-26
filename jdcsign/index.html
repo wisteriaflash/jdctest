@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>JDC - 生成签名</title>
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/style.css?v=20141226">
 </head>
 <body>
 
@@ -90,15 +90,15 @@
       </div>
     </div>
     <div class="form-group">
-      <label class="col-sm-2 control-label">姓名：</label>
-      <div class="col-sm-10">
-        <input type="text" data-preview=".name .zh" class="form-control" placeholder="请输入姓名">
-      </div>
-    </div>
-    <div class="form-group">
       <label class="col-sm-2 control-label">英文名：</label>
       <div class="col-sm-10">
         <input type="text" data-preview=".name .en" class="form-control" placeholder="请输入英文名">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">姓名：</label>
+      <div class="col-sm-10">
+        <input type="text" data-preview=".name .zh" class="form-control" placeholder="请输入姓名">
       </div>
     </div>
     <div class="form-group">
@@ -108,6 +108,7 @@
           <option>产品设计组</option>
           <option>创新组</option>
           <option>运营组</option>
+          <option>前端组</option>
         </select>
       </div>
       <div class="col-sm-4">
@@ -140,29 +141,32 @@
     <div class="form-group">
       <label class="col-sm-2 control-label">手机：</label>
       <div class="col-sm-10">
-        <input type="text" data-preview=".phone-num" class="form-control" placeholder="请输入手机号">
+        <input id="J_phoneNum" type="text" data-preview=".phone-num" class="form-control input-contact" placeholder="请输入手机号">
       </div>
     </div>
     <div class="form-group">
       <label class="col-sm-2 control-label">固定电话：</label>
       <div class="col-sm-10">
-        <input type="text" data-preview=".tel-num" class="form-control" placeholder="请输入固定电话">
+        <input type="text" data-preview=".tel-num" class="form-control input-contact" placeholder="请输入固定电话">
       </div>
     </div>
     <div class="form-group">
       <label class="col-sm-2 control-label">QQ：</label>
       <div class="col-sm-10">
-        <input type="text" data-preview=".qq-num" class="form-control" placeholder="请输入QQ号">
+        <input type="text" data-preview=".qq-num" class="form-control input-contact" placeholder="请输入QQ号">
       </div>
     </div>
     <div class="form-group">
       <label class="col-sm-2 control-label">微信号：</label>
       <div class="col-sm-10">
-        <input type="text" data-preview=".weixin-num" class="form-control" placeholder="请输入微信号">
+        <input type="text" data-preview=".weixin-num" class="form-control input-contact" placeholder="请输入微信号">
       </div>
     </div>
     <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
+      <div class="col-sm-offset-2 col-sm-3">
+        <a id="J_clearContact" class="btn btn-default btn-lg btn-block">清空联系方式</a>
+      </div>
+      <div class="col-sm-7">
         <a id="J_getSignImg" class="btn btn-primary btn-lg btn-block">生成签名</a>
       </div>
     </div>
@@ -174,6 +178,6 @@
 <script src="assets/jquery-1.9.1.min.js"></script>
 <script src="assets/jquery.ui.widget.js"></script>
 <script src="assets/jquery.fileupload.js"></script>
-<script src="assets/edit.js"></script>
+<script src="assets/edit.js?v=20141226"></script>
 </body>
 </html>

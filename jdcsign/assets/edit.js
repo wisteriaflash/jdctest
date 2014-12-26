@@ -14,7 +14,21 @@ $(function(){
         //preview
         var preStr = $(this).attr('data-preview');
         var preveiwNode = $('.preview '+preStr);
+        preveiwNode.parent().show();
         preveiwNode.text(data);
+      });
+      me.inputArr.on('blur', function(){
+        var data = $(this).val();
+        //preview
+        var preStr = $(this).attr('data-preview');
+        var preveiwNode = $('.preview '+preStr);
+        //exclude
+        if(preStr.match('mood')){
+          return;
+        }
+        if(data.length==0){
+          preveiwNode.parent().hide();
+        }
       });
       //jobType
       $('#J_jobType').on('change',function(){
@@ -37,6 +51,26 @@ $(function(){
         }else{
           $('#J_teamType').change();
         }
+      });
+      //phoneNum
+      $('#J_phoneNum').on('blur', function(){
+        var str = $(this).val();
+        var first = 3, second = 7, third = 11;
+        var maxLen = third +2;
+        if(str.length<third || str.length == maxLen){
+          return;
+        }
+        var formatStr = str.substring(0,first)+"-"+
+                        str.substring(first,second)+"-"+
+                        str.substring(second,str.length);
+        $(this).val(formatStr);
+        $(this).trigger('propertychange');
+      });
+      //clear
+      $('#J_clearContact').on('click', function(e){
+        var contactArr = $('.edit .input-contact');
+        contactArr.val('');
+        contactArr.trigger('blur');
       });
       //generate
       $('#J_getSignImg').on('click', function(e){

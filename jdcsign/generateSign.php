@@ -28,7 +28,7 @@
   //要截图的网址
   $url = 'http://localhost:8088/jdued/jdctest/jdcsign/result.html';
   //输出图片的位置与名称
-  $out = 'pic/'.$time.'.png';
+  $out = 'pic/tmp-'.$time.'.png';
   $path = 'E:/tool/develop/php/CutyCapt-Win32-2010-04-26/CutyCapt.exe';//你下载CutyCapt存放的位置
   //size
   $width = 600;
