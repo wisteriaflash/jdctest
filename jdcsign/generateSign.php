@@ -29,7 +29,7 @@
   $url = 'http://localhost:8088/jdued/jdctest/jdcsign/result.html';
   //输出图片的位置与名称
   $out = 'pic/tmp-'.$time.'.png';
-  $path = 'E:/tool/develop/php/CutyCapt-Win32-2010-04-26/CutyCapt.exe';//你下载CutyCapt存放的位置
+  $path = 'E:/project/jdued/jdctest/jdcsign/CutyCapt/CutyCapt.exe';//你下载CutyCapt存放的位置
   //size
   $width = 600;
   $height = 80;
