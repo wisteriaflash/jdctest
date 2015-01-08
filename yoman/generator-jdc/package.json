@@ -2,9 +2,11 @@
   "name": "generator-jdc",
   "version": "0.1.0",
   "description": "",
-  "keywords": ["yeoman-generator"],
+  "keywords": [
+    "yeoman-generator"
+  ],
   "author": "wisteria",
   "dependencies": {
-    "yeoman-generator": "^0.17.3"
+    "yeoman-generator": "^0.17.7"
   }
 }
