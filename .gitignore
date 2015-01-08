@@ -1,6 +1,5 @@
 .DS_Store
 Thumbs.db
-/node_modules
-/jdcsign/node_modules
+node_modules
 /jdcsign/upload
 /jdcsign/pic
