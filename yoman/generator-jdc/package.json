@@ -1,12 +1,11 @@
 {
-  "name": "generator-jdc",
-  "version": "0.1.0",
-  "description": "",
-  "keywords": [
-    "yeoman-generator"
-  ],
-  "author": "wisteria",
-  "dependencies": {
-    "yeoman-generator": "^0.17.7"
+  "name": "package",
+  "version": "0.0.1",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-sass": "^0.8.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-usemin": "^3.0.0",
+    "load-grunt-tasks": "^2.0.0"
   }
 }
