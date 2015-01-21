@@ -54,10 +54,10 @@
 .sign-content .info{min-width: 340px; float: left; font-size: 12px; color: #222; padding-left: 20px;}
 .sign-content .info em{font-style: normal;}
 .sign-content .info span{display: inline-block; width: 140px;}
-.sign-content .info span i{width: 8px; height: 12px; background-position: 0 -45px; display: inline-block; margin-right: 8px;}
-.sign-content .info span .icon-tel{width: 13px; background-position: -10px -45px; position: relative; top: 2px;}
-.sign-content .info span .icon-qq{width: 10px; background-position: -25px -45px;}
-.sign-content .info span .icon-weixin{width: 13px; background-position: -40px -45px; position: relative; top: 3px;}
+.sign-content .info span i{width: 13px; height: 12px; background-position: 0 -45px; display: inline-block; margin-right: 8px;}
+.sign-content .info span .icon-tel{width: 13px; background-position: -15px -45px; position: relative; top: 2px;}
+.sign-content .info span .icon-qq{width: 13px; background-position: -30px -45px;}
+.sign-content .info span .icon-weixin{width: 13px; background-position: -45px -45px; position: relative; top: 3px;}
 .sign-content .info .mood{color: #333; margin-top: 5px; margin-bottom: 7px; font-size: 14px; margin-left: -5px;}
 .sign-content .info .tel{margin-bottom: 5px;}
 .sign-content .info .tel .info-long{width: 180px;}
