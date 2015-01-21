@@ -14,6 +14,7 @@ $(function(){
         //preview
         var preStr = $(this).attr('data-preview');
         var preveiwNode = $('.preview '+preStr);
+        preveiwNode.show();
         preveiwNode.parent().show();
         preveiwNode.text(data);
       });
@@ -24,6 +25,12 @@ $(function(){
         var preveiwNode = $('.preview '+preStr);
         //exclude
         if(preStr.match('mood')){
+          return;
+        }
+        if(preStr.match('name')){
+          if(data.length == 0){
+            preveiwNode.hide();
+          }
           return;
         }
         if(data.length==0){
