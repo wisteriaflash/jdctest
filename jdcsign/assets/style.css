@@ -15,10 +15,15 @@
 .result h4, .preview h4, .edit h4{text-align: center; font-weight: bold;}
 .edit{clear: both;}
 .edit h4{padding-bottom: 10px;}
-.edit .avatar-group{margin-left: 10px;}
+.edit .avatar-group{margin-right: 10px;}
 .edit .avatar-default{min-width: 340px;}
 .edit .avatar-default li{padding: 0 10px 10px;}
 .edit .avatar-default img{display: inline-block; cursor: pointer;}
+
+.edit .logo-group{margin-right: 10px;}
+.edit .logo-group .dropdown-menu{min-width: 180px;}
+.edit .alert{padding: 6px; margin-left: 10px;}
+
 
 .result h4{position: relative;}
 .result h4 em{font-size: 12px; font-style: normal; padding-left: 5px; color: #CB1C2A; font-weight: normal; position: absolute; right: 0; top: 0;}
@@ -47,7 +52,8 @@
 .sign-content .user .team .name{margin-top: 10px; margin-bottom: 2px; color: #000;}
 .sign-content .user .team .name .en{display: inline-block; margin-right: 5px; font-weight: bold;}
 .sign-content .user .team .team-type{font-size: 12px; color: #CB1C2A; min-height: 17px;}
-.sign-content .user .team .logo{width: 72px; height: 15px; background-position: 0 -25px; margin-top: 7px; margin-left: -2px;}
+.sign-content .user .team .logo{height: 15px; margin-top: 6px; margin-left: -2px; background: none; max-width: 100px; overflow: hidden;}
+.sign-content .user .team .logo img{vertical-align: top;}
 
 
 /*sign-info*/

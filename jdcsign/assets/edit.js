@@ -24,10 +24,10 @@ $(function(){
         var preStr = $(this).attr('data-preview');
         var preveiwNode = $('.preview '+preStr);
         //exclude
-        if(preStr.match('mood')){
+        if(preStr && preStr.match('mood')){
           return;
         }
-        if(preStr.match('name')){
+        if(preStr && preStr.match('name')){
           if(data.length == 0){
             preveiwNode.hide();
           }
@@ -92,38 +92,50 @@ $(function(){
         me.generateImg();
       });
       //upload avastar
-      $('#upload_image').fileupload({
+      $('.file_image').fileupload({
           url: 'uploadPic.php',
           dataType: 'json',
           autoUpload: true,
           acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
           maxFileSize: 5000000, // 5 MB
           start: function(e){
-            $('.upload-button').addClass('disabled');
-            $('#upload_image').hide();
-              $('#J_uploadDownload').addClass('loading');
+            $(this).parents('.upload-button').addClass('disabled');
+            $(this).hide();
           },
           done: function(e, data){
               var result = data.result;
               if(result.status == 'success'){
-                me.renderAvatar(result.url);
-                // var time = new Date().getTime();
-                // $('.avatar img').attr("src",result.url+"?t="+time);
+                var node = $('.avatar img');
+                if($(this).attr('name') == 'upload_logo'){
+                  node = $('.logo img');
+                }
+                me.renderImage(result.url, node);
               }else{
                 alert(result.msg);
               }
-              //
-              $('.upload-button').removeClass('disabled');
-              $('#upload_image').show();
+              $(this).parents('.upload-button').removeClass('disabled');
+              $(this).show();
           }
       });
       //avatar-default
       $('#J_avatarDefault img').on('click', function(){
         var url = $(this).attr('src');
-        me.renderAvatar(url);
+        var node = $('.avatar img');
+        me.renderImage(url,node);
+      });
+      //upload avastar
+      
+      //logo-default
+      $('#J_logoDefault img').on('click', function(){
+        var url = $(this).attr('src');
+        var node = $('.logo img');
+        me.renderImage(url,node);
       });
       //commponent
       $('.dropdown-toggle').on('click', function(){
+        //clean
+        $('.dropdown-menu').hide();
+        //
         var parent = $(this).parent();
         var toggle = $(this).attr('data-toggle');
         var menuNode = parent.find('.'+toggle+'-menu');
@@ -131,16 +143,16 @@ $(function(){
       });
       $('body').on('click', function(e){
         var target = $(e.target);
-        if(target.hasClass('dropdown-toggle') || $(e.target).parents('.btn').length>0){
+        if(target.hasClass('dropdown-toggle') || $(e.target).parents('.dropdown-toggle').length>0){
           return;
         }else{
           $('.dropdown-menu').hide();
         }
       });
     },
-    renderAvatar: function(url){
+    renderImage: function(url, node){
       var time = new Date().getTime();
-      $('.avatar img').attr("src",url+"?t="+time);
+      node.attr("src",url+"?t="+time);
     },
     generateImg: function(){
       var me = this;

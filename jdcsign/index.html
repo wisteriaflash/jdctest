@@ -6,7 +6,7 @@
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" /> 
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/style.css?v=20141226">
+  <link rel="stylesheet" href="assets/style.css?v=20150122">
 </head>
 <body>
 
@@ -35,7 +35,7 @@
               <span class="zh">姓名</span>
             </p>
             <p class="team-type">产品设计组</p>
-            <p class="logo"></p>
+            <p class="logo"><img src="assets/default/logo1.png" height="15" alt="logo"></p>
           </div>
         </div>
         <div class="info">
@@ -60,11 +60,6 @@
     <div class="form-group">
       <label class="col-sm-2 control-label">个人头像：</label>
       <div class="col-sm-10">
-        <span class="btn btn-default upload-button">
-          <i class="glyphicon glyphicon-plus"></i>
-          <span>上传头像</span>
-          <input class="file_image file" id="upload_image" name="upload_image" type="file">
-        </span>
         <div class="btn-group avatar-group">
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
             系统头像 <span class="caret"></span>
@@ -87,8 +82,15 @@
               <img src="assets/default/10.png" alt="">
               <img src="assets/default/11.png" alt="">
               <img src="assets/default/12.png" alt="">
+            </li>
           </ul>
         </div>
+        <span class="btn btn-default upload-button">
+          <i class="glyphicon glyphicon-plus"></i>
+          <span>上传头像</span>
+          <input class="file_image file" id="upload_image" name="upload_image" type="file">
+        </span>
+        <span class="alert alert-danger">建议上传比例：1:1</span>
       </div>
     </div>
     <div class="form-group">
@@ -123,6 +125,30 @@
       </div>
     </div>
     <div class="form-group">
+      <label class="col-sm-2 control-label">logo：</label>
+      <div class="col-sm-10">
+        <div class="btn-group logo-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            系统logo <span class="caret"></span>
+          </button>
+          <ul id="J_logoDefault" class="dropdown-menu avatar-default" role="menu">
+            <li>
+              <img src="assets/default/logo1.png" alt="">
+            </li>
+            <li>
+              <img src="assets/default/logo2.png" alt="">
+            </li>
+          </ul>
+        </div>
+        <span class="btn btn-default upload-button">
+          <i class="glyphicon glyphicon-plus"></i>
+          <span>上传logo</span>
+          <input class="file_image file" id="upload_logo" name="upload_logo" type="file">
+        </span>
+        <span class="alert alert-danger">建议上传尺寸：100*15（px）</span>
+      </div>
+    </div>
+    <div class="form-group">
       <label class="col-sm-2 control-label">职位：</label>
       <div class="col-sm-10">
         <select id="J_jobType" class="form-control">
@@ -130,7 +156,7 @@
           <option value="icon-ud">交互设计</option>
           <option value="icon-fd">前端开发</option>
           <option value="icon-ur">用户研究</option>
-          <option value="icon-pm">产品</option>
+          <option value="icon-pm">产品经理</option>
         </select>
       </div>
     </div>
@@ -180,6 +206,6 @@
 <script src="assets/jquery-1.9.1.min.js"></script>
 <script src="assets/jquery.ui.widget.js"></script>
 <script src="assets/jquery.fileupload.js"></script>
-<script src="assets/edit.js?v=20141226"></script>
+<script src="assets/edit.js?v=20150122"></script>
 </body>
 </html>
