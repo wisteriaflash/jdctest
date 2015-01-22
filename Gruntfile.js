@@ -10,7 +10,13 @@ module.exports = function (grunt) {
                 options: {
                   livereload: true
                 },
-                files: ['jdcevent/**/*','jdcsign/**/*','!jdcsign/pic/**', '!jdcsign/result.html']
+                files: [
+                    'jdcevent/**',
+                    'jdcsign/**/*',
+                    '!jdcsign/pic/**', 
+                    '!jdcsign/upload/**', 
+                    '!jdcsign/result.html'
+                ]
             }
         }
     });
