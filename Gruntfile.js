@@ -1,29 +1,25 @@
-
 /*global module */
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
     'use strict';
 
     grunt.initConfig({
-        watch: {
-            livereload: {
-                options: {
-                  livereload: true
+        browserSync: {
+            dev: {
+                bsFiles: {
+                    src: '**/*.{css,html}'
                 },
-                files: [
-                    'jdcevent/**',
-                    'jdcsign/**/*',
-                    '!jdcsign/pic/**', 
-                    '!jdcsign/upload/**', 
-                    '!jdcsign/result.html'
-                ]
+                options: {
+                    server: {
+                        baseDir: "./"
+                    }
+                }
             }
         }
     });
 
     //load
-    grunt.loadNpmTasks('grunt-contrib-watch');
-
+    grunt.loadNpmTasks('grunt-browser-sync');
     //task
-    grunt.registerTask('default', ['watch']);
+    grunt.registerTask('default', ['browserSync']);
 };
