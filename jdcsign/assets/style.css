@@ -22,7 +22,7 @@
 
 .edit .logo-group{margin-right: 10px;}
 .edit .logo-group .dropdown-menu{min-width: 180px;}
-.edit .alert{padding: 6px; margin-left: 10px;}
+.edit .alert{padding: 6px; margin-left: 10px; font-size: 12px;}
 
 
 .result h4{position: relative;}
