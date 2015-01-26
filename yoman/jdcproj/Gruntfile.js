@@ -146,7 +146,7 @@ module.exports = function(grunt) {
           cwd: '<%= config.src %>/',
           src: ['{,*/}*.js'],
           dest: '<%= config.dist %>',
-          ext: '.min.js'
+          ext: '.js'
         }]
       }
     },
