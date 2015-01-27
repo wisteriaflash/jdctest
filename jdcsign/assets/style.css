@@ -34,6 +34,7 @@
   -ms-animation:hand-shake .6s infinite ease-in-out;
   animation:hand-shake .6s infinite ease-in-out;}
 
+.feedback{height: 42px; line-height: 42px; background-color: #ededed; color: #999; text-align: center; margin-top: 20px;}
 
 
 
