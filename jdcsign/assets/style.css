@@ -7,7 +7,7 @@
 .sign-content .user .team .logo,
 .sign-content .info span i,
 .result h4 em:before
-{background: url(sprite.png) no-repeat;}
+{background: url(sprite.png?v=20150127) no-repeat;}
 
 /*opt*/
 .result, .preview{padding: 10px 0 20px;}
@@ -15,6 +15,7 @@
 .result h4, .preview h4, .edit h4{text-align: center; font-weight: bold;}
 .edit{clear: both;}
 .edit h4{padding-bottom: 10px;}
+.edit .tip{text-align: center; color: #a94442; margin-top: -10px; margin-bottom: 10px; font-size: 12px;}
 .edit .avatar-group{margin-right: 10px;}
 .edit .avatar-default{min-width: 340px;}
 .edit .avatar-default li{padding: 0 10px 10px;}
@@ -47,6 +48,7 @@
 .sign-content .user .avatar .icon-fd{background-position: -50px 0;}
 .sign-content .user .avatar .icon-pm{background-position: -75px 0;}
 .sign-content .user .avatar .icon-ur{background-position: -100px 0;}
+.sign-content .user .avatar .icon-om{background-position: -125px 0;}
 
 .sign-content .user .team{float: left;}
 .sign-content .user .team .name{margin-top: 10px; margin-bottom: 2px; color: #000;}
