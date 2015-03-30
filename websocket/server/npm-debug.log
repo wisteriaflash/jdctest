@@ -1,0 +1,62 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'D:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'D:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'socket.io',
+1 verbose cli   '--save' ]
+2 info using npm@1.4.3
+3 info using node@v0.10.26
+4 verbose node symlink D:\Program Files\nodejs\\node.exe
+5 warn package.json realtime-server@0.0.1 No repository field.
+6 warn package.json realtime-server@0.0.1 No README data
+7 verbose readDependencies using package.json deps
+8 verbose cache add [ 'socket.io', null ]
+9 verbose cache add name=undefined spec="socket.io" args=["socket.io",null]
+10 verbose parsed url { protocol: null,
+10 verbose parsed url   slashes: null,
+10 verbose parsed url   auth: null,
+10 verbose parsed url   host: null,
+10 verbose parsed url   port: null,
+10 verbose parsed url   hostname: null,
+10 verbose parsed url   hash: null,
+10 verbose parsed url   search: null,
+10 verbose parsed url   query: null,
+10 verbose parsed url   pathname: 'socket.io',
+10 verbose parsed url   path: 'socket.io',
+10 verbose parsed url   href: 'socket.io' }
+11 silly lockFile 71475bfd-socket-io socket.io
+12 verbose lock socket.io C:\Users\Administrator\AppData\Roaming\npm-cache\71475bfd-socket-io.lock
+13 silly lockFile 71475bfd-socket-io socket.io
+14 silly lockFile 71475bfd-socket-io socket.io
+15 verbose addNamed [ 'socket.io', '' ]
+16 verbose addNamed [ null, '*' ]
+17 silly lockFile c03de861-socket-io socket.io@
+18 verbose lock socket.io@ C:\Users\Administrator\AppData\Roaming\npm-cache\c03de861-socket-io.lock
+19 silly addNameRange { name: 'socket.io', range: '*', hasData: false }
+20 verbose url raw socket.io
+21 verbose url resolving [ 'https://registry.cnpmjs.org/', './socket.io' ]
+22 verbose url resolved https://registry.cnpmjs.org/socket.io
+23 info trying registry request attempt 1 at 14:21:35
+24 http GET https://registry.cnpmjs.org/socket.io
+25 info retry will retry, error on last attempt: Error: tunneling socket could not be established, cause=connect ECONNREFUSED
+26 info trying registry request attempt 2 at 14:21:47
+27 http GET https://registry.cnpmjs.org/socket.io
+28 info retry will retry, error on last attempt: Error: tunneling socket could not be established, cause=connect ECONNREFUSED
+29 info trying registry request attempt 3 at 14:22:48
+30 http GET https://registry.cnpmjs.org/socket.io
+31 silly lockFile c03de861-socket-io socket.io@
+32 silly lockFile c03de861-socket-io socket.io@
+33 error network tunneling socket could not be established, cause=connect ECONNREFUSED
+33 error network This is most likely not a problem with npm itself
+33 error network and is related to network connectivity.
+33 error network In most cases you are behind a proxy or have bad network settings.
+33 error network
+33 error network If you are behind a proxy, please make sure that the
+33 error network 'proxy' config is set properly.  See: 'npm help config'
+34 error System Windows_NT 6.1.7601
+35 error command "D:\\Program Files\\nodejs\\\\node.exe" "D:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "socket.io" "--save"
+36 error cwd E:\project\jdued\jdctest\websocket\server
+37 error node -v v0.10.26
+38 error npm -v 1.4.3
+39 error code ECONNRESET
+40 verbose exit [ 1, true ]
