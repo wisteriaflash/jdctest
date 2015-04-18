@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas 学习</title>
+  <style>
+  #canvas{border: 1px solid #aaa; display: block; margin: 50px auto;}
+  </style>
+</head>
+<body>
+  <canvas id="canvas">
+    当前浏览器不支持Canvas，请更换浏览器后再试
+  </canvas>
+  <script>
+  var canvas = document.getElementById('canvas');
+  canvas.width = 1024;
+  canvas.height = 768;
+  if(canvas.getContext('2d')){
+    var context = canvas.getContext('2d');
+    //use context drwa graphic
+    //
+    context.beginPath();
+    context.moveTo(100,100);
+    context.lineTo(700,700);
+    context.lineTo(100,700);
+    context.lineTo(100,100);
+    context.closePath();
+    
+    // fill
+    // context.fillStyle = "rgb(2,100,30)";
+    // context.fill();
+
+    //stroke
+    context.lineWidth = 5;
+    context.strokeStyle = "red";
+    context.stroke();
+    
+    //stroke-2
+    context.beginPath();
+    context.moveTo(200, 100);
+    context.lineTo(700, 600);
+    context.closePath();
+    
+    context.strokeStyle = "black";
+    context.stroke();
+
+  }else{
+    alert('当前浏览器不支持Canvas，请更换浏览器后再试');
+  }
+  
+  
+  </script>
+</body>
+</html>
