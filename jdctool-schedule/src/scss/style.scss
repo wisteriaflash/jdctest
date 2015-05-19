@@ -1,0 +1,102 @@
+@charset "UTF-8";
+@import "normalize";
+@import "bourbon";
+
+// vars
+$baseColor: #E4393C;
+
+// reset
+h1,h3{
+  margin: 0;
+  font-weight: bold;
+}
+em{
+  font-style: normal;
+}
+.radio-inline input[type=radio], .radio-inline input[type=checkbox], table{
+  outline: none;
+}
+
+/*main*/
+body{
+  font-family:"Microsoft YaHei","SimSun",arial,helvetica,clean,sans-serif;
+  font-size: 14px;
+}
+.wrapper{
+  width: 800px; 
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+.wrapper h1{
+  text-align: center;
+  font-size: 28px; 
+  margin: 20px 0;
+}
+.wrapper h3{
+  font-size: 20px;
+  margin: 15px 0;
+  text-align: center;
+  color: $baseColor;
+}
+.hide{
+  display: none !important;
+}
+.show{
+  display: block !important; 
+}
+.modal{
+  top: 30%;
+  // @include transform(translateY(-40%));
+}
+
+// edit
+.control-label .tip{
+  font-weight: normal;
+  color: $baseColor;
+  font-size: 12px;
+}
+.week-days .days-item{
+  margin-left: 0;
+  margin-right: 10px;
+}
+.team-user{
+  margin-top: 15px;
+  .btn{
+    margin-right: 10px;
+    position: relative;
+  }
+  .btn .btn-del{
+    position: absolute;
+    display: block;
+    width: 14px;
+    height: 14px;
+    line-height: 10px;
+    border-radius: 7px;
+    text-align: center;
+    right: -7px;
+    top: -7px;
+    font-size: 12px;
+    background-color: $baseColor;
+    color: #FFF;
+  }
+}
+.schedule-item{
+  margin-bottom: 10px;
+}
+.schedule-unit{
+  display: inline-block;
+  margin: 0 5px;
+}
+
+
+
+// result
+.result{
+  margin: 20px -100px 0;
+  .btn{
+    font-size: 14px;
+    line-height: 14px;
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
