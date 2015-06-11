@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title> New Document </title>
+ <link rel="stylesheet" href="css/cxcalendar.css">
+<style>
+h1,h2,h3{font:bold 36px/1 "\5fae\8f6f\96c5\9ed1";}
+h2{font-size:20px;}
+h3{font-size:16px;}
+fieldset{margin:1em 0;}
+fieldset legend{font:bold 14px/2 "\5fae\8f6f\96c5\9ed1";}
+a{color:#06f;text-decoration:none;}
+a:hover{color:#00f;}
+
+.wrap{width:600px;margin:0 auto;padding:20px 40px;border:2px solid #999;border-radius:8px;background:#fff;box-shadow:0 0 10px rgba(0,0,0,0.5);}
+</style>
+<script src="jquery-1.9.1.js"></script>
+<script src="calendar.js"></script>
+ </head>
+
+ <body>
+	<p>
+		开始时间：<input name="mydate" type="text" class="input_cxcalendar" style="width:200px;">
+		结束时间：<input name="mydate2" type="text" class="input_cxcalendar" style="width:200px;" >
+	</p>
+	
+	<script>
+		$('.input_cxcalendar').each(function(){
+			var a = new Calendar({
+				targetCls: $(this),
+				type: 'yyyy-mm-dd HH:MM',
+				wday:2
+			},function(val){
+				console.log(val);
+			});
+		});
+	</script>　
+ </body>
+</html>
