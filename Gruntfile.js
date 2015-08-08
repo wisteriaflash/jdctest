@@ -19,7 +19,11 @@ module.exports = function(grunt) {
     browserSync: {
       dev: {
         bsFiles: {
-          src: ['**/*.{css,html}', 'jdcsign/*.js', 'jdcevent/*.js']
+          src: [
+            '**/*.{css,html}',
+            'jdcsign/**/*.js',
+            'jdcevent/*.js'
+          ]
         },
         options: {
           server: {
