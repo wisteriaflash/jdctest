@@ -34,6 +34,7 @@ module.exports = function(grunt) {
     }
   });
 
+
   //task
   grunt.registerTask('default', ['browserSync']);
 };

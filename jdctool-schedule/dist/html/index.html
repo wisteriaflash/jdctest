@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jdc工具 - 生成排期表</title>
+<link rel="stylesheet" href="../libs/bootstrap-css/css/bootstrap.min.css">
+<link rel="stylesheet" href="../libs/datetimepicker/bootstrap-datetimepicker.min.css">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+/*result*/
+.result table{border: 1px solid #FFF; border-width: 0 1px 1px 0; text-align: center;}
+.result table thead tr{background-color: #F4F4F4; height: 40px; line-height: 40px; font-size: 24px;}
+.result table th, .result table td{border: 1px solid #FFF; border-width: 1px 0 0 1px;}
+.result table th{font-weight: normal; text-align: center;}
+.result table td{min-height: 30px; line-height: 30px;}
+
+.result table tbody{color: #FFF;}
+.result table tbody tr:nth-child(even){background-color: #6EC038;}
+.result table tbody tr:nth-child(odd){background-color: #9CE159;}
+.result table tbody tr:nth-child(even) td:first-child{background-color: #FFC072;}
+.result table tbody tr:nth-child(odd) td:first-child{background-color: #FFA93A;}
+.result table .data{font-weight: bold; font-style: normal;}
+.result table .title td{background-color: #64B2DF !important;}
+.result table .title td:first-child{min-width: 80px;}
+.result table .gray-td{background-color: #BFBFBF;}
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+  <h1>jdc工具 - 生成排期表</h1>
+  <!--S edit-area -->
+  <div id="J_editArea" class="edit-area form-horizontal">
+    <h3>编辑区域</h3>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">周期：<br><em class="tip">(右侧->所选日期<br>将列入排期表中)</em></label>
+      <div class="col-sm-10 form-inline">
+        <input id="J_startTime" type="text" class="form-control" placeholder="开始时间" readonly>
+        <em class="schedule-unit">-</em>
+        <input id="J_endTime" type="text" class="form-control" placeholder="结束时间" readonly>
+        <div id="J_weekDays" class="week-days">
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">所属小组</label>
+      <div class="col-sm-10 form-inline">
+        <select id="J_teamType" class="form-control">
+          <option value="fd">前端组</option>
+          <option value="vd">视觉组</option>
+        </select>
+        <em class="schedule-unit"></em>
+        <span id="J_editUsers" class="btn btn-primary">编辑小组成员</span>
+        <em class="schedule-unit"></em>
+        <span id="J_saveUsers" class="btn btn-success hide">保存小组成员数据至后台</span>
+        <div id="J_teamUsers" class="team-user hide">
+          <span class="team-user-item btn btn-default">
+            <em class="txt">成员1</em>
+            <em class="btn-del">x</em>
+          </span>
+          <span id="J_userAdd" class="btn btn-primary user-add" data-toggle="modal" data-target="#J_userPopup">新增</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group hide">
+      <label class="col-sm-2 control-label"></label>
+      <div class="col-sm-10">
+        <a id="J_generator" class="btn btn-primary btn-block">生成排期表</a>
+      </div>
+    </div>
+    
+  </div>
+  <!--E edit-area -->
+  <!--S result -->
+  <div id="J_result" class="result hide">
+    <h3>生成内容<a class="btn btn-danger">选中表格</a></h3>
+    <table width="100%" tabindex="0">
+      <thead>
+        <tr>
+          <th colspan="8">工作计划<em class="data">（2015.04.13~04.17）</em></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="title">
+          <td>姓名</td>
+          <td>周一(4月13日)</td>
+          <td>周二(4月14日)</td>
+          <td>周三(4月15日)</td>
+          <td>周四(4月16日)</td>
+          <td>周五(4月17日)</td>
+          <td>座机</td>
+          <td>手机</td>
+        </tr>
+        <tr class="table-user">
+          <td>魏丽华</td>
+          <td colspan="3">甘特图</td>
+          <td>618大促</td>
+          <td>例会</td>
+          <td>452220</td>
+          <td>18201819217</td>
+        </tr>
+        <tr class="table-user">
+          <td>卢伟斌</td>
+          <td class="gray-td">调休</td>
+          <td colspan="3">MBA-无线用户营销分析平台</td>
+          <td>例会</td>
+          <td>452220</td>
+          <td>18201819217</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!--E result -->
+</div>
+
+
+
+
+<!-- tpl -->
+<div id="J_tpl" class="tpl hide">
+  <!--S days-item -->
+  <label class="checkbox-inline days-item"><input type="checkbox" name="date-num" checked="" value="5"><em class="txt">x月x日(周x)</em></label>
+  <!--E days-item -->
+  <!--S team-user-item -->
+  <span class="team-user-item btn btn-default">
+    <em class="txt">成员1</em>
+    <em class="btn-del">x</em>
+  </span>
+  <!--E team-user-item -->
+  <!--S user-item -->
+  <div class="form-group user-item">
+    <label class="col-sm-2 control-label">姓名</label>
+    <div class="col-sm-10 form-inline">
+      <div class="schedule-item">
+        <select class="form-control">
+          <option value="default">默认色</option>
+          <option value="gray">灰色</option>
+        </select>
+        <em class="schedule-unit"></em>
+        <input type="text" class="form-control content" placeholder="请输入工作内容">
+        <em class="schedule-unit">:</em>
+        <input type="text" class="form-control num" placeholder="请输入天数">
+        <em class="schedule-unit"></em>
+        <span class="btn btn-danger schedule-btn-del">删除</span>
+      </div>
+      <div class="schedule-add">
+        <span class="btn btn-primary schedule-btn-add">增加一行</span>
+      </div>
+    </div>
+  </div>
+  <!--E user-item -->
+</div>
+
+<!-- popup -->
+<div class="modal fade" id="J_userPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">新增成员</h4>
+      </div>
+      <div class="modal-body form-horizontal">
+        <div class="form-group">
+          <label class="col-sm-2 control-label"> 姓名：</label>
+          <div class="col-sm-8">
+            <input type="text" name="name" class="form-control" placeholder="请输入姓名">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label"> 座机：</label>
+          <div class="col-sm-8">
+            <input type="text" name="tel" class="form-control" placeholder="请输入座机号">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label"> 手机：</label>
+          <div class="col-sm-8">
+            <input type="text" name="mobile" class="form-control" placeholder="请输入手机号">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary btn-save">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../libs/jquery.js"></script>
+<script src="../libs/bootstrap-css/js/bootstrap.min.js"></script>
+<script src="../libs/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script src="../libs/datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../js/script.js"></script>
+</body>
+</html>

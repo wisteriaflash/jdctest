@@ -1,0 +1,10 @@
+{
+  "name": "package",
+  "version": "0.0.0",
+  "dependencies": {
+    "bourbon": "~4.2.2",
+    "normalize-scss": "~3.0.2",
+    "bootstrap-css": "~3.2.0",
+    "jquery-1.8.3.min": "http://code.jquery.com/jquery-1.8.3.min.js"
+  }
+}
