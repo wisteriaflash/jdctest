@@ -20,7 +20,7 @@ module.exports = function(grunt) {
       dev: {
         bsFiles: {
           src: [
-            '**/*.{css,html}',
+            '**/*.{css}',
             'jdcsign/**/*.js',
             'jdcevent/*.js'
           ]
