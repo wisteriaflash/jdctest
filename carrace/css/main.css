@@ -1,0 +1,115 @@
+/* 
+    Document   : main.css
+    Created on : 19-nov-2013, 15.47.44
+    Author     : Biagio Iannuzzi
+    Description:
+        Purpose of the stylesheet follows.
+*/
+/*
+@font-face
+{
+	font-family: FZLTTH_GBK;
+	src: url('../fonts/FZLTTH_GBK.TTF');
+}
+*/
+root { 
+    display: block;
+}
+
+body{
+    background-color: white;
+    background-repeat: repeat-x;
+    background-position: top; 
+}
+
+* {
+    user-select: none;
+    -khtml-user-select: none;
+    -o-user-select: none;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+}
+
+::selection { background: transparent;color:inherit; }
+::-moz-selection { background: transparent;color:inherit; }
+
+#topframe{
+	top:0px;
+    left:0px;
+    width:640px;
+    height:1136px;
+    background-color: white;
+    position:absolute;
+    display:block;
+	/*
+    top:0px;
+    left:0px;
+    width:640px;
+    height: 1136px;
+    background-color: white;
+    position:absolute;
+    display:block;
+	*/
+}
+#canvas{
+	/*
+    top:0px;
+    left:0px;
+    width:640px;
+    height: 1136px;
+    background-color: white;
+    position: absolute;
+	*/
+}
+
+canvas {
+	margin: 0;
+	padding: 0;
+	top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+	display:block;
+    image-rendering: optimizeSpeed;
+    image-rendering:-o-crisp-edges;
+    image-rendering:-webkit-optimize-contrast;
+    -ms-interpolation-mode: nearest-neighbor;
+	-ms-touch-action: none;
+	/*
+    image-rendering: optimizeSpeed;
+    image-rendering:-o-crisp-edges;
+    image-rendering:-webkit-optimize-contrast;
+    -ms-interpolation-mode: nearest-neighbor;
+	-ms-touch-action: none;
+	*/
+}
+
+.ani_hack{
+    -webkit-perspective: 1000;
+    -webkit-backface-visibility: hidden;
+    
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0); /* mobile webkit */
+}
+.go_index_ground{
+    width: 152px;
+    height: 59px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-image: url("../sprites/gameclose.png");
+}
+.end_game_goindex{
+    top:-200px;
+    right: -12px;
+}
+.no_oils_index{
+    top:-252px;
+    right: -20px;
+}

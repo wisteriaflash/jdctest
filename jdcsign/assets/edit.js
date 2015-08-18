@@ -3,9 +3,25 @@ $(function(){
   var edit = {
     inputArr: $('.edit input'),
     isGenerate: false,
+    cropObj: {},
     init: function(){
       var me = this;
+      me.resizeView();
       me.bindHandler();
+    },
+    resizeView: function(){
+      var me = this;
+      //clean
+      $('body').attr('style','');
+      //resize
+      var bodyOffset = $('body').css('padding-bottom');
+      bodyOffset = Number(bodyOffset.replace('px',''));
+      var totalH = $(document).height();
+      var bodyH = $('body').height()+bodyOffset;
+      if(bodyH<totalH){
+        $('body').height(totalH-bodyOffset);
+      }
+      $('.feedback').css('display','block');
     },
     bindHandler: function(){
       var me = this;
@@ -108,8 +124,11 @@ $(function(){
                 var node = $('.avatar img');
                 if($(this).attr('name') == 'upload_logo'){
                   node = $('.logo img');
+                  me.renderImage(result.url, node);
+                }else{//avatar
+                  me.renderCropPopup(result);
+                  me.showCrop();
                 }
-                me.renderImage(result.url, node);
               }else{
                 alert(result.msg);
               }
@@ -122,8 +141,40 @@ $(function(){
         var url = $(this).attr('src');
         var node = $('.avatar img');
         me.renderImage(url,node);
+      });     
+      //crop-event
+      $('#J_imageCropPopup').on('click', function(e){
+        var target = $(e.target);
+        if(target.hasClass('popup')){
+          //close
+          $('#J_imageCropPopup .btn-close').click();
+        }
       });
-      //upload avastar
+      $('#J_imageCropPopup .btn-close').on('click', function(e){
+        $('#J_imageCropPopup').stop().fadeOut(200);
+      });
+      $('#J_imageCropPopup .btn-confirm').on('click', function(e){
+        var data = $('#J_imgTarget').data('cropData');
+        if(!data || data.w==0){
+          $('#J_imageCropPopup .alert').fadeIn();
+          return;
+        }
+        var imgUrl = $('#J_imgTarget').attr('src');
+        //send data
+        $.ajax({
+          url: 'uploadPic.php',
+          type: 'POST',
+          dataType: 'json',
+          data: {type: 'crop', data: data, img: imgUrl},
+          success: function(data){
+            console.log(data,data.url);
+            var node = $('.avatar img');
+            me.renderImage(data.url, node);
+          }
+        })
+        //close
+        $('#J_imageCropPopup .btn-close').click();
+      });
       
       //logo-default
       $('#J_logoDefault img').on('click', function(){
@@ -164,6 +215,9 @@ $(function(){
           success: function(data){
             me.renderSignImg(data);
             me.recoverBtn();
+            setTimeout(function(){
+              me.resizeView();
+            },450);
           }
       });
     },
@@ -190,6 +244,57 @@ $(function(){
       var node = $('#J_getSignImg');
       node.text('生成签名');
       node.removeClass('disabled');
+    },
+    renderCropPopup: function(data){
+      var me = this;
+      $('#J_imageCropPopup .crop-container img').attr({
+        src: data.url,
+        width: data.width,
+        height: data.height,
+        style: ''
+      });
+      me.cropObj.cropW = data.width;
+      me.cropObj.cropH = data.height;
+    },
+    showCrop: function(){
+      var me = this;
+      //jcrop
+      if(me.cropObj.jcropApi){
+        me.cropObj.jcropApi.destroy();
+      }
+      $('#J_imgTarget').Jcrop({
+        aspectRatio: 1,
+        onChange: me.showCropPreveiw,
+        onSelect: me.showCropPreveiw,
+        onRelease: function(){
+          $('.crop-preview').stop().fadeOut();
+        }
+      }, function(){
+        me.cropObj.jcropApi = this;
+      });
+      //show
+      $('#J_imageCropPopup').stop().show();
+      $('#J_imageCropPopup .alert').stop().hide();
+      $('.crop-preview').stop().hide();
+    },
+    // showCropPreveiw:
+    showCropPreveiw: function(coords){
+      var me = edit;
+      //preview
+      if(parseInt(coords.w) > 0){
+        var rx = 75 / coords.w;
+        var ry = 75 / coords.h;
+
+        $('.crop-preview img').css({
+          width: Math.round(rx * me.cropObj.cropW) + 'px',
+          height: Math.round(ry * me.cropObj.cropH) + 'px',
+          marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+          marginTop: '-' + Math.round(ry * coords.y) + 'px'
+        });
+        $('.crop-preview').show();
+      }
+      //data
+      $('#J_imgTarget').data('cropData',coords);
     }
   }
   //init

@@ -26,9 +26,7 @@ module.exports = function(grunt) {
           ]
         },
         options: {
-          server: {
-            baseDir: "./"
-          }
+          proxy: "localhost:8088"
         }
       }
     }

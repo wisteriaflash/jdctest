@@ -1,0 +1,840 @@
+﻿*{
+    font-family: 'Microsoft YaHei','STHeiti';
+
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+}
+#main_loading {
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    /*background-image: url("./sprites/loading.png");*/
+}
+
+/*388,689*/
+/*313,614*/
+
+#loading_pointer {
+    display: block;
+    width: 123px;
+    height: 124px;
+    top: 605px;
+    left: 260px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    /*background-image: url("./sprites/loading_pointer.png");*/
+}
+
+#loading_text {
+    display: block;
+    width: 129px;
+    height: 43px;
+    top: 70%;
+    left: 38.87%;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    /*background-image: url("./sprites/loading_text.png");*/
+}
+
+/*388-144.5,689-142*/
+/*388-144.5,689-142*/
+#loading_glow {
+    display: block;
+    width: 245px;
+    height: 283px;
+    top: 521px;
+    left: 197px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    /*background-image: url("../sprites/loading_glow.png");*/
+    opacity: 0;
+}
+
+#friend_fuel {
+    display: none;
+    left: 12px;
+    top: 234px;
+    width: 616px;
+    height: 576px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/friend_fuel.png");
+}
+
+friendfueltext {
+    display: block;
+    width: 540px;
+    height: 195px;
+    top: 170px;
+    left: 38px;
+    position: absolute;
+    text-align: center;
+    overflow: auto;
+}
+
+friendfuelitem {
+    width: 520px;
+    height: 62px;
+    line-height: 62px;
+    display: block;
+    margin: 3px 10px 2px 10px;
+    font-size: 20px;
+    text-shadow: 0px 0px 10px #ffd800;
+    color: #ffd800;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/friendfuelitem.png");
+}
+
+friendfuelimage {
+    display: block;
+    width: 56px;
+    height: 56px;
+    left: 24px;
+    position: absolute;
+    color: #ffd800;
+    font-size: 20px;
+    text-shadow: 0px 0px 10px #ffd800;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+friendfuelname {
+    display: block;
+    width: 150px;
+    height: 76px;
+    left: 60px;
+    position: absolute;
+    color: #ffd800;
+    font-size: 20px;
+    text-shadow: 0px 0px 10px #ffd800;
+}
+
+
+friendfuelcount {
+    display: block;
+    width: 250px;
+    height: 76px;
+    left: 278px;
+    position: absolute;
+    color: #ffd800;
+    font-size: 20px;
+    text-shadow: 0px 0px 10px #ffd800;
+}
+
+#friend_fuel_ok {
+    display: block;
+    left: 315px;
+    top: 540px;
+    width: 261px;
+    height: 84px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/friend_fuel_button.png");
+}
+
+    #friend_fuel_ok:active {
+        transform: scale(0.95);
+        background-image: url("../sprites/friend_fuel_button_h.png");
+    }
+
+friendmyfuel {
+    display: block;
+    width: 200px;
+    height: 15px;
+    top: 445px;
+    left: 300px;
+    position: absolute;
+    color: #ffd800;
+    font-size: 40px;
+    text-shadow: 0px 0px 10px #ffd800;
+}
+
+smoothlayer {
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/smooth.jpg");
+}
+
+insufficient {
+    display: none;
+    width: 593px;
+    height: 470px;
+    top: 252px;
+    left: 26px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/insufficient.png");
+}
+
+#insufficient_share {
+    display: block;
+    width: 169px;
+    height: 56px;
+    top: 340px;
+    left: 337px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/insufficient_share.png");
+}
+
+    #insufficient_share:active {
+        transform: scale(0.95);
+        background-image: url("../sprites/insufficient_share_h.png");
+    }
+
+#insufficient_buy {
+    display: block;
+    width: 169px;
+    height: 56px;
+    top:340px;
+    left: 84px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/insufficient_buy.png");
+}
+
+    #insufficient_buy:active {
+        transform: scale(0.95);
+        background-image: url("../sprites/insufficient_buy_h.png");
+    }
+
+
+ranking {
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: -30px;
+    left: 0px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/ranking.png");
+}
+
+#ranking_ok {
+    display: block;
+    width: 288px;
+    height: 113px;
+    top: 818px;
+    left: 319px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/ranking_ok.png");
+}
+
+    #ranking_ok:active {
+        transform: scale(0.95);
+        background-image: url("../sprites/ranking_ok_h.png");
+    }
+
+rankingname {
+    display: block;
+    width: 150px;
+    height: 76px;
+    left: 150px;
+    position: absolute;
+    color: #ffd800;
+    font-size: 20px;
+    text-shadow: 0px 0px 10px #ffd800;
+}
+
+position {
+    display: block;
+    width: 150px;
+    height: 76px;
+    left: 0px;
+    position: absolute;
+    color: #ffd800;
+    font-size: 20px;
+    text-shadow: 0px 0px 10px #ffd800;
+}
+
+
+mile {
+    display: block;
+    width: 150px;
+    height: 76px;
+    left: 360px;
+    position: absolute;
+    color: #ffd800;
+    font-size: 20px;
+    text-shadow: 0px 0px 10px #ffd800;
+}
+
+
+#ranking_today_grey {
+    display: block;
+    width: 151px;
+    height: 50px;
+    top: 838px;
+    left: 32px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/rankingtoday.png");
+}
+
+#ranking_history_grey {
+    display: block;
+    width: 151px;
+    height: 50px;
+    top: 838px;
+    left: 162px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/rankinghistory.png");
+}
+
+#ranking_today {
+    display: block;
+    width: 151px;
+    height: 50px;
+    top: 838px;
+    left: 32px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/rankingtoday_highlight.png");
+    opacity: 1;
+}
+
+#ranking_history {
+    display: block;
+    width: 151px;
+    height: 50px;
+    top: 838px;
+    left: 162px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/rankinghistory_highlight.png");
+    opacity: 0;
+}
+
+#rankingtext {
+    display: block;
+    width: 516px;
+    height: 420px;
+    top: 337px;
+    left: 66px;
+    position: absolute;
+    text-align: center;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+rankingitem {
+    width: 517px;
+    height: 76px;
+    line-height: 76px;
+    display: block;
+    margin: 8px;
+    font-size: 20px;
+    text-shadow: 0px 0px 10px #ffd800;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/rankingitem.png");
+}
+
+#ranking_date {
+    display: block;
+    width: 210px;
+    height: 43px;
+    top: 253px;
+    left: 372px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/ranking_date.png");
+    opacity: 0;
+}
+
+#ranking_dropdown {
+    display: none;
+    width: 208px;
+    top: 296px;
+    left: 372px;
+    position: absolute;
+    opacity: 0;
+    box-shadow: 0px 0px 10px rgb(255, 203, 0);
+    text-align: center;
+    background-color: #351f11;
+}
+
+rdpdateitem {
+    width: 193px;
+    height: 50px;
+    line-height: 50px;
+    border-width: 1px;
+    box-shadow: 0px 0px 2px rgb(255, 203, 0);
+    border-color: rgb(255, 203, 0);
+    display: block;
+    margin: 8px;
+    color: #ffd800;
+    font-size: 20px;
+    text-shadow: 0px 0px 10px #ffd800;
+}
+
+    rdpdateitem:active {
+        background-color: rgb(122, 97, 0);
+    }
+
+rankingtitletext {
+    color: #ffffff;
+    font-size: 26px;
+    text-shadow: 0px 0px 10px #ffd800;
+}
+
+#ranking_totalmiles {
+    top: 153px;
+    left: 131px;
+    width: 201px;
+    display: block;
+    height: 37px;
+    line-height: 37px;
+    text-wrap: normal;
+    text-align: center;
+    position: absolute;
+}
+
+
+#ranking_rank {
+    top: 192px;
+    left: 131px;
+    width: 201px;
+    display: block;
+    height: 37px;
+    line-height: 37px;
+    text-wrap: normal;
+    text-align: center;
+    position: absolute;
+}
+
+#ranking_selecteddate {
+    top: 0px;
+    left: 15px;
+    width: 212px;
+    display: block;
+    height: 45px;
+    line-height: 45px;
+    text-wrap: normal;
+    text-align: center;
+    position: absolute;
+
+}
+
+
+#ranking_leftarrow {
+    top: 773px;
+    left: 80px;
+    width: 164px;
+    display: none;
+    height: 53px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/ranking_leftarrow.png");
+}
+    #ranking_leftarrow:active {
+        transform: scale(0.95);
+    }
+#ranking_rightarrow {
+    top: 773px;
+    left: 389px;
+    width: 169px;
+    display: none;
+    height: 53px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/ranking_rightarrow.png");
+}
+    #ranking_rightarrow:active {
+        transform: scale(0.95);
+    }
+
+#ranking_page {
+    top: 773px;
+    left: 265px;
+    width: 120px;
+    display: none;
+    height: 37px;
+    position: absolute;
+    height: 37px;
+    line-height: 37px;
+    color: #ffffff;
+    font-size: 26px;
+    text-wrap: normal;
+    text-align: center;
+    text-shadow: 0px 0px 10px #ffd800;
+
+}
+
+mainmenu {
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/main.jpg");
+}
+
+#button_yiche {
+    display: block;
+    left: 54px;
+    bottom: 30px;
+    width: 150px;
+    height: 48px;
+    position:absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/main_yiche.png");
+    opacity: 1;
+}
+
+    #button_yiche:active {
+        transform: scale(0.95);
+    }
+
+#button_ranking {
+    display: block;
+    left: 452px;
+    bottom: 30px;
+    width: 150px;
+    height: 49px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/main_ranking.png");
+    opacity: 1;
+}
+
+    #button_ranking:active {
+        transform: scale(0.95);
+    }
+
+#button_desc {
+    display: block;
+    left: 284px;
+    bottom: 30px;
+    width: 78px;
+    height: 49px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/main_rules.png");
+    opacity: 1;
+}
+
+    #button_desc:active {
+        transform: scale(0.95);
+    }
+
+#button_play {
+    display: block;
+    left: 123px;
+    bottom: 100px;
+    width: 406px;
+    height: 125px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/main_start.png");
+    opacity: 1;
+}
+
+#button_play.gray{
+    background-image: url("../sprites/main_start.png");
+}
+
+    #button_play:active {
+        transform: scale(0.95);
+    }
+
+
+rule {
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/rules.jpg");
+    overflow: hidden;
+}
+
+mod {
+    display: block;
+    width: 480px;
+    height: 530px;
+    left: 85px;
+    top: 280px;
+    position: absolute;
+    color: #ffd800;
+    font-size: 20px;
+    text-shadow: 0px 0px 10px #ffd800;
+    text-wrap: normal;
+    line-break:strict;
+    overflow-y:scroll;
+}
+
+
+endgame {
+    display: none;
+    width: 616px;
+    height: 574px;
+    top: 200px;
+    left: 12px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/endgame.png");
+}
+
+#endgame_challenge {
+    display: none;
+    width: 260px;
+    height: 84px;
+    top: 540px;
+    left: 35px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/endgame_challenge.png");
+}
+
+    #endgame_challenge:active {
+        transform: scale(0.95);
+        background-image: url("../sprites/endgame_challenge_h.png");
+    }
+
+#endgame_trial {
+    display: none;
+    width: 260px;
+    height: 84px;
+    top: 540px;
+    left: 35px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/endgame_trial.png");
+}
+
+    #endgame_trial:active {
+        transform: scale(0.95);
+        background-image: url("../sprites/endgame_trial_h.png");
+    }
+
+
+#endgame_redpacket {
+    display: none;
+    width: 260px;
+    height: 84px;
+    top: 540px;
+    left: 321px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/endgame_redpacket.png");
+}
+
+    #endgame_redpacket:active {
+        transform: scale(0.95);
+        background-image: url("../sprites/endgame_redpacket_h.png");
+    }
+
+#endgame_reward {
+    display: none;
+    width: 260px;
+    height: 84px;
+    top: 540px;
+    left: 321px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/endgame_reward.png");
+}
+
+    #endgame_reward:active {
+        transform: scale(0.95);
+        background-image: url("../sprites/endgame_reward_h.png");
+    }
+
+
+#endgame_shareresult {
+    display: none;
+    width: 260px;
+    height: 84px;
+    top: 540px;
+    left: 321px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/endgame_shareresult.png");
+}
+
+    #endgame_shareresult:active {
+        transform: scale(0.95);
+        background-image: url("../sprites/endgame_shareresult_h.png");
+    }
+
+
+endgamebigtext {
+    color: #ffd800;
+    font-size: 40px;
+    text-shadow: 0px 0px 10px #ffd800;
+}
+
+#endgame_message1 {
+    top: 150px;
+    left: 39px;
+    width: 540px;
+    display: block;
+    height: 140px;
+    line-height: 60px;
+    text-wrap: normal;
+    text-align: center;
+    position: absolute;
+}
+
+#endgame_message2 {
+    top: 270px;
+    left: 39px;
+    width: 540px;
+    display: block;
+    height: 60px;
+    line-height: 60px;
+    text-wrap: normal;
+    text-align: center;
+    position: absolute;
+}
+#endgame_message3 {
+    top: 260px;
+    left: 39px;
+    width: 540px;
+    display: block;
+    height: 60px;
+    line-height: 60px;
+    text-wrap: normal;
+    text-align: center;
+    position: absolute;
+    font-size: 26px;
+    color: #fff5c0;
+}
+
+endgamehead {
+    color: #fff5c0;
+    font-size: 30px;
+    text-shadow: 0px 0px 10px #ffd800;
+}
+
+#endgame_messagehead {
+    top: 122px;
+    left: 195px;
+    width: 220px;
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    text-wrap: normal;
+    text-align: center;
+    position: absolute;
+}
+
+endgamemile {
+    color: #ffd800;
+    font-size: 40px;
+    text-shadow: 0px 0px 10px #ffd800;
+}
+
+#endgame_messagemile {
+    top: 402px;
+    left: 86px;
+    width: 440px;
+    display: block;
+    height: 95px;
+    line-height: 45px;
+    text-wrap: normal;
+    text-align: center;
+    position: absolute;
+    font-size: 30px;
+}
+
+button_return {
+    display: block;
+    left: 255px;
+    bottom: -160px;
+    width: 78px;
+    height: 49px;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../sprites/return.png");
+    opacity: 1;
+}
+
+    button_return:active {
+        transform: scale(0.95);
+    }

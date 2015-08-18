@@ -1,0 +1,357 @@
+﻿<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title>游戏分享</title>
+		<link href="css/bagandshare.css" rel="stylesheet">
+		
+		<script charset="UTF-8" type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+		<script charset="UTF-8" type="text/javascript" src="js/jquery.cookie.js"></script>
+		<script charset="UTF-8" type="text/javascript" src="js/connectorUI.js"></script>
+		<script charset="UTF-8" type="text/javascript" src="js/share.js"></script>
+        <script charset="UTF-8" type="text/javascript" src="js/page.js"></script>
+        <script src="http://h5.m.jd.com/active/track/mping.min.js"></script>
+
+    </head>
+
+	<body >
+		<!--替换图片--> 
+		<img class="bgimg" src="images/change_img.jpg"  /> 
+		<!--为好友加油-->
+		<div class="box01" id="box01"> <img class="boxbgimg" src="images/box1bg_02.png"  />
+		  <div id="user_info" class="headbox">
+			<p class="ptext1">小伙伴们，快来为我加油吧！</p>
+		  </div>
+		  <a id="button01"><img class="boxbgimg" src="images/button01bg_03.png"  /></a> <a id="button02"><img class="boxbgimg" src="images/button01bg_032.png"  /></a>
+		  <a id="btn_jump" class="button03"><img class="boxbgimg" src="images/button2bg_07.png"/></a>
+		  <!--a id="btn_try_game" class="button04"><img class="boxbgimg" src="images/button3bg_11.png"  /></a-->
+		</div>
+
+		<!--好友加油列表-->
+		<div class="box02" id="friends_box">
+			<ul id="friends_ul" >
+				<!--<li> <img class="pic" src="images/pimg_03.jpg" /> <span class="name">橙子</span><span class="num">1</span> <img class="boxbgimg" src="images/libg_15.png"  /> </li>-->
+			</ul>
+		</div>
+		<img class="boxbgimg" src="images/box3bg_16.png"  /> 
+		<!--活动规则-->
+		<div class="box03" id="box03">
+            <p id="comment_text">
+                1、活动时间<br>
+                2015年5月22日00:00至5月30日24:00<br>
+                2、	怎么加油？<br>
+                点击“为TA加油”按钮，联合登录之后即可为您的好友增加一次游戏机会，每天最多能有7位好友帮忙增加游戏机会（每次游戏机会即为游戏中的1桶燃油）<br>
+                3、如何参与游戏？<br>
+                用户注册/登陆京东移动客户端，参与本游戏，参与游戏用户根据当日游戏总里程排名获得相应奖品，每日豪送3000张油卡，最高4666元<br>
+                4、如遇不可抗力等因素，导致活动无法正常进行时，京东有权取消、终止、修改或暂停本活动。<br>
+                5、京东不会以任何方式索要您的银行账号、密码等信息，请注意安全谨防诈骗；请不要相信京东客服和易车客服以外的其他任何中奖提示<br>
+                6、 本次活动严禁利用作弊器等一切违反活动规则的作弊行为，对于违背活动公平性的作弊者将直接取消其参赛成绩及获奖资格；<br>
+                7、详细的活动规则请通过京东客户端正式进入游戏之后查阅<br>
+
+            </p>
+            <img id="boxbgimg" style=" position:absolute; left:0; top:0; z-index:0;" src="images/repeatbg_14.png" width="100%" />
+		</div>
+		<img class="boxbgimg" src="images/bottomline.jpg"  />
+        <div class="cover_div">无法获取信息</div>
+		
+		<script>
+            if(!isWeixinBrowser()){
+                $(".cover_div").show();
+            }
+			//alert("IMIN: " + location.href);
+			var APPID = "wxad87cc702bc6bb54",//"wx9996230550313ab3",//"wx4ecbfeb33b8ba547",//"wxad87cc702bc6bb54",
+				//APPSECRET = "780213bb983d306c2509aaa43a29c084",//"dbb6b338a2a75925a08d7348917ddea2",
+				REDIRECT_URI = location.href,//"http://121.40.205.172/share/share.html",//"http://192.168.0.107/projects/jdCar/share.html",//"h5.m.jd.com",
+				SCOPE = "snsapi_userinfo";
+				
+				
+			var s_onLine = true,
+				s_oRequestManager = new CRequestManager,
+				//s_pin = "123456",
+				s_sid = (getQueryString("sid")) ? getQueryString("sid") : "123456",
+                s_info = (getQueryString("info"))?getQueryString("info"):"123456",
+				s_userId,
+				s_userName, s_userPicUrl,
+				s_isReady = false,
+				s_isLocked = false;
+
+            //skip union login process for testing
+            var s_isTest = false;
+			
+			
+			var ch=document.documentElement.clientHeight;
+			var cw=document.documentElement.clientWidth;
+			var box01=document.getElementById("box01");
+			var friends_ul=document.getElementById("friends_ul");
+			var friends_box=document.getElementById("friends_box");
+			var box03=document.getElementById("box03");
+			var boxbgimg=document.getElementById("boxbgimg");
+			var button01=document.getElementById("button01");
+			var button02=document.getElementById("button02");
+			var button03=document.getElementById("btn_jump");
+			//var button04=document.getElementById("btn_try_game");
+			var comment_text=document.getElementById("comment_text");
+			var user_info=document.getElementById("user_info");
+			
+			
+			var mul=cw/639;
+			var li_height=68*mul;
+			box01.style.marginTop=690*mul+"px";
+			//friends_ul.style.height=li_height*10+"px";
+			//friends_box.style.height=li_height*10+"px";
+			//boxbgimg.height=box03.offsetHeight;
+			/*
+			var lis=friends_ul.getElementsByTagName("li");
+			for(i=0;i<lis.length;i++){
+				lis[i].style.lineHeight=68*mul+6+"px";
+			}
+			*/
+			
+			//----------------------------------------------------------------------------------------
+
+			if (s_onLine)
+			{
+
+			}
+            //comment get userinfo
+//            s_oRequestManager.sendRealRequest("userInfo", s_sid, 'body={" "}', function(json){
+//                initJDUserinfo(json);
+//            });
+
+            // init share content at first
+            s_oRequestManager.sendRealRequest("theCarRaceJiaYouPageInit", "",
+                    'body={"data": "'+s_info+'"}',function(json){
+                        initShareByServer(json);
+                    });
+
+            //operation describe
+//            s_oRequestManager.sendRealRequest("theCarRaceWnDoc", "", 'body={" "}', function(json){
+//                initDocByServer(json);
+//            });
+			
+			button01.style.display="block";
+			button02.style.display="none";
+			
+			s_isReady = true;
+			
+			//为TA加油
+			button01.onclick=function() {
+
+                //mPing
+                mPingFunction("M618FCWeChat_FuelFillForFriend", location.href.split('?')[0]);
+
+                var istoday = $("#button01").attr("istoday");
+                if (istoday != "true") {
+                    alert("加油已过期");
+                    return false;
+                }
+                if (s_isTest == true) {
+//                    s_userId = 1234567890;
+//                    s_userName = "jdTest";
+                    s_oRequestManager.sendRealRequest("theCarRaceFriendsRefuel", "", 'body={"data":"' + s_info + '", "frpin":"' + s_userId + '","nname":"' + s_userName + '", "url": "' + s_userPicUrl + '"}',
+                            function (json) {
+                                if (json.code == 0) {
+                                    alert("感谢您的加油!");
+                                } else if (json.code == 30) {
+                                    alert("您已为好友加过油!");
+                                } else {
+                                    alert(json.msg);
+                                }
+//                        if (json.code == 30)
+//                            alert("您已为好友加过油!");
+
+                            });
+
+                }
+
+                //正规流程，走联合登陆流程
+                var access_code = getQueryString('code');
+                if (s_isReady && !s_isLocked && s_isTest == false) {
+                    s_isLocked = true;
+
+                    if (!access_code) {
+                        //请求code
+                        if (isInWeChat()) {
+                            var fromurl = location.href;
+                            var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + APPID + '&redirect_uri=' + encodeURIComponent(REDIRECT_URI) + '&response_type=code&scope=' + SCOPE + '&state=1#wechat_redirect';
+                            //alert("sendURL:" + url + " " + fromurl);
+                            location.href = url;
+                        } else {
+                            alert("Not in wechat");
+                        }
+                    }
+                }
+
+                access_code = getQueryString('code');
+                //获取到code，传给后台
+                if (access_code)
+                {
+                    //获得code，接口13
+                    s_oRequestManager.sendRealRequest("getWxUserInfo",
+                            s_sid,
+                            'body={"code":"' +
+
+                            access_code + '","appId":"' + APPID + '"}'
+                            , function(json){
+                                s_userId = json.
+                                        userInfo.
+                                        openid;
+                                s_userName = json.userInfo.nickname;
+                                s_userPicUrl = json.userInfo.headimgurl;
+
+
+                                s_oRequestManager.sendRealRequest("theCarRaceFriendsRefuel", "", 'body={"data":"'+s_info+'", "frpin":"' + s_userId + '","nname":"' + s_userName + '", "url": "'+s_userPicUrl+'"}',
+                                        function(json){
+                                            if (json.code == 0){
+                                                alert("感谢您的加油!");
+                                            }else if(json.code == 27 || json.code == 28){
+                                                getWechatInfo();
+
+                                            }else if(json.code == -1){
+                                                alert("网络萌萌哒!");
+                                            }
+                                            else
+                                            {
+                                                alert(json.msg);
+                                            }
+                                        });
+                                });
+                }
+            }
+
+
+            function getWechatInfo()
+            {
+                s_oRequestManager.sendRealRequest("getWxUserInfo", s_sid, 'body={"code":"' + access_code + '","appId":"' + APPID + '"}'
+                        , function(json) {
+                            s_userId = json.userInfo.openid;
+                            s_userName = json.userInfo.nickname;
+                            s_userPicUrl = json.userInfo.headimgurl;
+                        });
+            }
+			
+			//拿大奖去
+			button03.onclick=function()
+			{
+
+                //mPing
+                mPingFunction("M618FCWeChat_GetToPrize", location.href.split('?')[0]);
+
+                //wake up JD APP
+                var appurl = 'openApp.jdMobile://virtual?params={"category":"jump","des":"getCoupon","action":"to","url":'+ $("#btn_jump").attr("gameurl") + '}';
+                var murl = 'http://h5.m.jd.com/active/download/download.html';
+
+                openJdApp(appurl, murl);
+
+                return false;
+			}
+			
+//			//过把飙车瘾
+//			button04.onclick=function()
+//			{
+//				//带参，离线游戏
+//                if (s_oGame)
+//                    s_oGame.gotoGame(false);
+//			}
+
+
+			function initFriendListByServer(dataObj)
+			{
+                if (dataObj && dataObj.list && dataObj.list.length)
+                {
+                    var friends = dataObj.list;
+
+                    for (var i = 0; i < friends.length; i++)
+                    {
+                        var li = document.createElement("li");
+                        var odate = String(friends[i].datetime);
+                        var sdate = odate.substr(0, 4) + "-" + odate.substr(4, 2) + "-" + odate.substr(6, 2) + " " + odate.substr(8, 2) + ":" + odate.substr(10, 2) + ":" + odate.substr(12, 2);
+                        li.innerHTML = ' <img class="pic" src="' + friends[i].url + '"/> <span class="name">' + friends[i].nname + '</span><img class="boxbgimg" src="images/libg_15.png"  /> ';
+                        li.style.lineHeight = 68 * mul + 6 + "px";
+                        friends_ul.appendChild(li);
+                    }
+
+                    // need to use jd interface to get userinfo
+
+                    box01.style.marginTop = 690 * mul + "px";
+                    friends_ul.style.height = li_height * friends.length + "px";
+                    friends_box.style.height = li_height * friends.length + "px";
+                }else{
+                    $(friends_ul).parent().append($("<p>").attr("class", "no_friend_jia").text("还没有好友给你加油哟"));
+                }
+			}
+
+
+
+			function initDocByServer(dataObj)
+			{
+                //comment_text.innerHTML = "" + dataObj.result;
+				
+				boxbgimg.height = box03.offsetHeight;
+			}
+
+            function initJDUserinfo(dataObj)
+            {
+                //'+dataObj.url +'
+                user_info.innerHTML = '<img src="images/bottomline.jpg"/><p class="ptext1"><span class="uesrname">' + dataObj.unickName + '</span>&nbsp;&nbsp;&nbsp;需要您的帮助获得<span>今日大奖！</ span> </p>';
+
+                //<span>XXXX公里</span>
+            }
+
+			function initShareByServer(dataObj)
+			{
+                if(dataObj){
+                    $("#button01").attr("istoday",dataObj.isToday);
+                    $("#btn_jump").attr("gameurl",dataObj.url);
+                    //用户信息
+                    var userELe = $("#user_info");
+                    userELe.find("img").attr("src",dataObj.imgurl || "");
+                    userELe.find(".uesrname").text(dataObj.nname || "");
+                }
+                //friends list
+                initFriendListByServer(dataObj);
+                s_pin = dataObj.data;
+				
+				if (isInWeChat()) {
+					//alert("ISREADY");
+					s_isReady = true;
+				}
+				button01.style.display= "block";
+				button02.style.display="none";
+
+            }
+
+			function initRefuelByServer(dataObj)
+			{
+                s_isLocked = false;
+				
+				button01.style.display="none";
+				button02.style.display="block";
+			}
+			
+			function isInWeChat()
+			{	
+				var ua = navigator.userAgent.toLowerCase();
+                //console.debug("UA: " + ua);
+
+                //alert("UA: " + ua);
+				if(ua.match(/MicroMessenger/i) =="micromessenger") {
+					return true;
+				} else {
+					return false;
+				}
+			}
+			
+			function getQueryString(name) {
+				var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+				var r = window.location.search.substr(1).match(reg);
+				if (r != null) {
+					return unescape(r[2]);
+				}
+				return null;
+			}
+
+		</script>
+	</body>
+</html>
