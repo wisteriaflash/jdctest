@@ -148,9 +148,6 @@ $(function() {
       });
       //clear
       $('#J_clearContact').on('click', function(e) {
-        me.generateData();
-        return;
-
         var contactArr = $('.edit .input-contact');
         contactArr.val('');
         contactArr.trigger('blur');
