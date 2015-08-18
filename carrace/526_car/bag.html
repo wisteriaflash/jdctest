@@ -1,0 +1,339 @@
+﻿<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title>红包</title>
+		<link href="css/bagandshare.css" rel="stylesheet">
+		
+		<script charset="UTF-8" type="text/javascript" src="js/connectorUI.js"></script>
+		<script charset="UTF-8" type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+		<script charset="UTF-8" type="text/javascript" src="js/share.js"></script>
+        <script charset="UTF-8" type="text/javascript" src="js/main.js"></script>
+    </head>
+
+	<body >
+		<!--替换图片--> 
+		<img class="bgimg" src="images/change_img.jpg"  /> 
+		<!--获得大奖-->
+		<div class="box01" id="box01"> <img class="boxbgimg" src="images/pm_box1bg.png"  /> 
+		<img id="moenybag" width="31.3%"  src="images/moneybag.gif"  /> 
+		<img id="moenybag2" width="31.3%"  src="images/moneybag.png"  />
+        <div id="missRedPackage" style="display: none">红包已过期</div>
+		<p id="moenybag3"><!--恭喜获得</br><span>200元京东优惠券</span>--></p>
+		<!--a class="shiwbutton" id="shiwan" ><img class="boxbgimg" src="images/bagbuttonbg01.png"  /></a-->
+		<a id="formal_game" class="shiwbutton" style="top:63.3%; "><img class="boxbgimg" src="images/bagbuttonbg02.png"  /></a>
+		<p class="changemoney" id="changemoney">（快来拆红包）</p>
+		</div>
+
+		<!--活动规则-->
+		<div class="box03" id="box03">
+            <p id = "comment_text">
+                1、活动时间
+                2015年5月22日00:00至5月30日24:00<br>
+                2、	怎么获取红包？
+                点击红包图标，登录京东账号之后即可获得红包，每个红包每人只能领取一次；每个红包总共可以被5个人领完<br>
+                3、如何参与游戏？
+                用户注册/登陆京东移动客户端，参与本游戏，参与游戏用户根据当日游戏总里程排名获得相应奖品，每日总里程排名第1名的用户可获得免费购车权，排名第2-500名的用户可获得加油卡（其中5月23日、24日、28日三天的1-3名皆是获得免费购车券）；每日24点清零当日里程，如若出现里程数一样的情况，率先达到该里程的用户排名靠前<br>
+                4、如遇不可抗力等因素，导致活动无法正常进行时，京东有权取消、终止、修改或暂停本活动。<br>
+                5、京东不会以任何方式索要您的银行账号、密码等信息，请注意安全谨防诈骗；请不要相信京东客服和易车客服以外的其他任何中奖提示<br>
+                6、 本次活动严禁利用作弊器等一切违反活动规则的作弊行为，对于违背活动公平性的作弊者将直接取消其参赛成绩及获奖资格；<br>
+                7、详细的游戏规则请通过京东客户端正式进入游戏之后查阅
+            </p>
+
+            <img id="boxbgimg" style=" position:absolute; left:0; top:0; z-index:4;" src="images/repeatbg_14.png" width="100%" /> </div>
+		<img class="boxbgimg" src="images/bottomline.jpg"  />
+        <div class="cover_div">无法获取信息</div>
+		<script>
+            var ua = navigator.userAgent.toLowerCase();
+            if(!/micromessenger/.test(ua)){
+                $(".cover_div").show();
+            }
+			var s_onLine = true,
+				s_oRequestManager = new CRequestManager,
+				//s_pin = "123456",
+				s_uesrId,
+				s_userName,
+				s_isReady = false,
+				s_isLocked = false;
+				
+			
+			var ch=document.documentElement.clientHeight;
+			var cw=document.documentElement.clientWidth;
+			var box01=document.getElementById("box01");
+			var box03=document.getElementById("box03");
+			var boxbgimg=document.getElementById("boxbgimg");
+			var mul=cw/639;
+			var li_height=68*mul;
+			box01.style.marginTop=690*mul+"px";
+			boxbgimg.height=box03.offsetHeight;
+
+			var moenybag=document.getElementById("moenybag");
+			var moenybag2=document.getElementById("moenybag2");
+			var moenybag3=document.getElementById("moenybag3");
+			var changemoney=document.getElementById("changemoney");
+			var formal_game=document.getElementById("formal_game");
+            var comment_text=document.getElementById("comment_text");
+            //var shiwan_game=document.getElementById("shiwan");
+
+			var img_w=44;
+			
+			//--------------------------------------------------------------------------------------------------
+			
+			var s_info = getQueryString("info");
+			var s_sid = getQueryString("sid");
+			
+			var s_type,
+				s_key,
+				s_no,
+				s_status;
+			
+			var u = location.href;//"http://121.40.205.172/bag/bag.html";
+			
+			if (s_onLine)
+			{
+				s_sid || (s_sid = "");
+				s_info || (s_info = "");
+
+				//s_oRequestManager.sendRequest("redEnvelopePageInit", 'body={"info":"' + s_info + '"&sid":"' + s_sid + '"}');
+                s_oRequestManager.sendRealRequest("redEnvelopePageInit", s_sid, 'body={"info":"' + s_info + '"}'
+                        ,   function(json){
+                            //alert("redEnvelopePageInit json get success!");
+                            initBagByServer(json);
+                        });
+            }else
+			{
+				s_status = 1;
+				s_isReady = true;
+			}
+			
+			//开红包
+			moenybag.onclick=function()
+			{
+				if (s_isReady && !s_isLocked)
+				{
+					s_isLocked = true;
+
+					if (s_status == 0)
+					{
+						//m页登陆
+                        window.parent.location.href = 'https://passport.m.jd.com/user/login.action?v=1&returnurl='+encodeURI(window.location.href);
+						//login(loginCallback, s_sid)
+					}else if (s_status == 1)
+					{
+						//sid有效，红包可开，申请开包
+						
+						moenybag.style.display="none";
+						changemoney.style.display="none";
+						
+						moenybag2.style.display="block";
+						sh = setInterval(show,10);
+						
+						//s_oRequestManager.sendRequest("grabRedEnvelope", 'body={"info":"' + info + '"&sid":"' + s_sid + '"}');
+                        s_oRequestManager.sendRealRequest("grabRedEnvelope", s_sid, 'body={"info":"' + s_info + '"}'
+                                , function(json){
+                                    //alert("grabRedEnvelope json get success!");
+                                    initOpenBagByServer(json);
+                                });
+                    }else if (s_status == 2)
+					{
+						//sid有效，红包不可开
+						moenybag.style.display="none";
+						changemoney.style.display="none";
+						
+						moenybag2.style.display="block";
+						sh = setInterval(show,10);
+					}
+				}
+			}
+
+            var hh=1;
+            function show(){
+                img_w=img_w-1;
+                moenybag2.style.width=img_w+"%";
+                moenybag2.style.left=(100-img_w)/2+"%";
+                hh=hh+(23.4-1)/44;
+                moenybag2.style.top=hh+"%";
+                if(img_w==0)
+                {
+                    clearInterval(sh);
+
+                    /*alert("get bag s_type:"+s_type+"s_key:"+s_key);*/
+                    if (s_status == 1)
+                    {
+                        //moenybag3.html('恭喜领取</br><span>' + s_type + '' + s_key + '</span>');
+                        moenybag3.innerHTML="";
+                        moenybag3.innerHTML = '<span>恭喜领取</br>' + s_type + '' + s_key + '</span>';
+                    }else if (s_status == 2)
+                    {
+                        //moenybag3.html('已领取</br><span>' + s_type + '' + s_key + '</span>');
+                        moenybag3.innerHTML="";
+                        moenybag3.innerHTML = '<span>已领取</br>' + s_type + '' + s_key + '</span>';
+                    }
+
+
+                    moenybag3.style.display="block";
+                }
+            }
+
+            //试玩比赛
+//            shiwan_game.onclick=function()
+//            {
+//                if (s_oGame)
+//                    s_oGame.gotoGame(false);
+//            }
+			
+			//正式比赛
+			formal_game.onclick=function()
+			{
+                wechatToJD();
+
+//                var url = $("#btn_jump").attr("gameurl") || "http://h5.m.jd.com/active/carrace/index.html";
+//
+//                if(url) {
+//                    var jump = new wechatToJD();
+//                    var appurl = encodeURIComponent('openApp.jdMobile://virtual?params={"category":"jump","des":"getCoupon","action":"to","url":'+url+'}');
+//                    var murl = 'http://h5.m.jd.com/active/download/download.html';
+//
+//                    jump.openJdApp(appurl, murl);
+//                }
+
+                return false;
+//                var openflag = $("#formal_game").attr("openflag") || "http://h5{0}.m.jd.com/active/hongbao/index.html";
+//                if(openflag) {
+//                    var jump = new wechatToJD();
+//                    var appurl = 'openApp.jdMobile://virtual?params={"category":"jump","des":"getCoupon","action":"to","url":'+openflag+'}';
+//                    var murl = 'http://h5.m.jd.com/active/download/download.html';
+//
+//                    jump.openJdApp(appurl, murl);
+//                }
+            }
+			
+			function initBagByServer(dataObj)
+			{
+				s_type = dataObj.type;
+				s_key = dataObj.key;
+				s_no = dataObj.no;
+				s_status = dataObj.status;
+				var isEnd = dataObj.end;
+
+                if (s_status == 2)
+                {
+                    moenybag.style.display="none";
+
+                    sh = setInterval(show,10);
+                    s_isReady = false;
+                }
+                if(dataObj && dataObj.url){
+                    $("#formal_game").attr("openflag",dataObj.url);
+                }
+                if(isEnd == 1){
+                    $("#moenybag2").hide();
+                    $("#changemoney").hide();
+                    $("#missRedPackage").show();
+                }
+				s_isReady = true;
+
+
+			}
+
+//            s_oRequestManager.sendRealRequest("theCarRaceWnDoc", "", 'body={" "}', function(json){
+//                initDocByServer(json);
+//            });
+//            function initDocByServer(dataObj)
+//            {
+//                //comment_text.innerHTML = "" + dataObj.result;
+//
+//                boxbgimg.height=box03.offsetHeight;
+//            }
+			
+			function initOpenBagByServer(dataObj)
+			{
+				if (s_status == 0)
+				{
+					//m页登陆
+                    window.parent.location.href = 'https://passport.m.jd.com/user/login.action?v=1&returnurl='+encodeURI(window.location.href);
+
+                    //login(loginCallback, s_sid)
+				}else if (s_status == 1)
+				{
+					//sid有效，红包可开，申请开包
+					
+					moenybag.style.display="none";
+					changemoney.style.display="none";
+					
+					moenybag2.style.display="block";
+					sh = setInterval(show,10);
+
+
+                    //theCarRaceCheckUserLevelAndGrab
+					//s_oRequestManager.sendRequest("theCarRaceCheckUserLevelAndGrab", 'body={"info":"' + info + '"&sid":"' + s_sid + '"}');
+                    //s_oRequestManager.sendRealRequest("grabRedEnvelope", s_sid, 'body={"info":"' + s_info + '"}'
+                            //, function(json){
+                                //alert("grabRedEnvelope json get success!");
+/*                                var codeStatus = {
+                                    "2":"已经抢过红包",
+                                    "3":"抢红包失败",
+                                    "4":"领取失败，券已领完",
+                                    "5":"领取失败，券已领完",
+                                    "6":"抢红包失败"
+                                }
+                                if(json.status == 1){
+                                    initOpenBagByServer(json);
+                                }else{
+                                    alert(codeStatus[new String(json.status)]);
+                                    return;
+                                }*/
+                            //});
+                }else if (s_status == 2)
+				{
+					//sid有效，红包不可开
+					moenybag.style.display="none";
+					changemoney.style.display="none";
+					
+					moenybag2.style.display="block";
+					sh = setInterval(show,10);
+				}	
+			}
+			
+			function getQueryString(name) {
+				var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+				var r = window.location.search.substr(1).match(reg);
+				if (r != null) {
+					return unescape(r[2]);
+				}
+				return null;
+			}
+			
+			function login(callback, sid) 
+			{
+				var jump = function (url) { window.parent.location.href = 'https://passport.m.jd.com/user/login.action?v=1&returnurl=' + encodeURI(url); };
+				if (!sid) {
+					jump(u);
+					return false;
+				}
+//				//sid换pin
+//				$.ajax({
+//					type: "GET",
+//					dataType: "jsonp",
+//					url: "http://h5.m.jd.com/h5api.jsp",
+//					data: { sid: sid },
+//					success: function (data) {
+//						pin = data.userPin;
+//						if (pin) {
+//							return callback ? callback(pin) : "";
+//						}
+//						else {
+//							jump(u);
+//						}
+//					}
+//				});
+			}
+			
+			function loginCallback(pin) 
+			{
+				// Do Nothing
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>618飞车</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
+
+    <link rel="stylesheet" href="css/reset.css" type="text/css">
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+    <meta http-equiv="expires" content="-1" />
+
+    <meta name="msapplication-tap-highlight" content="no" />
+
+    <script charset="UTF-8" type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="js/createjs-2013.09.25.min.js"></script>
+    <script charset="UTF-8" type="application/javascript" src="js/fastclick.js"></script>
+    <script src="http://h5.m.jd.com/active/track/mping.min.js"></script>
+
+    <link rel="stylesheet" href="css/page.css" type="text/css">
+    <script src="js/gsap/TweenMax.min.js"></script>
+    <script src="js/gsap/jquery.gsap.min.js"></script>
+
+    <script charset="UTF-8" type="text/javascript" src="js/page.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="js/main.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="js/stopwatch.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="js/game_component.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="data/gamedata.js"></script>
+
+    <script charset="UTF-8" type="text/javascript" src="js/connectorUI.js"></script>
+
+</head>
+<body>
+    <script>
+        $(document).ready(function () {
+            pageInitScreen();
+            pageShowLoading();
+        });
+
+    </script>
+
+    <canvas id="canvas" class='ani_hack'></canvas>
+
+    <topframe id="topframe">
+        <loadingcontent id="main_loading">
+            <pointer id="loading_pointer"></pointer>
+            <glow id="loading_glow"></glow>
+            <textimage id="loading_text"></textimage>
+        </loadingcontent>
+
+        <mainmenu>
+            <buttonyiche id="button_yiche"></buttonyiche>
+            <buttonranking id="button_ranking"></buttonranking>
+            <buttonhelp id="button_desc"></buttonhelp>
+            <buttonplay id="button_play"></buttonplay>
+            <buttonprize id="button_prize"></buttonprize>
+        </mainmenu>
+
+
+        <smoothlayer>
+        </smoothlayer>
+
+        <friendfuel id="friend_fuel">
+            <friendfueltext id="friendfueltext">
+                <friendfuelitem>
+                    <friendfuelimage></friendfuelimage>
+                    <friendfuelname>u1</friendfuelname>
+                    <friendfuelcount>1</friendfuelcount>
+                </friendfuelitem>
+            </friendfueltext>
+
+            <friendmyfuel id="friend_my_fuel"></friendmyfuel>
+            <friendfuelok id="friend_fuel_ok"></friendfuelok>
+        </friendfuel>
+
+        <insufficient>
+            <div class="go_index_ground no_oils_index" id="noOilIndex"></div>
+            <share id="insufficient_share"></share>
+            <buy id="insufficient_buy"></buy>
+            <div class="no_oils_friend award_tips" id="awardTips"></div>
+            <div class="no_oils_friend tips_color">每日最多有7位微信好友为您加油！</div>
+            <div class="no_oils_Bottom tips_color">温馨提示：还有大量的用户向您的成绩呼啸而来，为了大奖继续加油吧！</div>
+            <!--button_return id="insufficient_return"></button_return-->
+        </insufficient>
+
+
+        <prize>
+            <div class="go_index_ground" id="okPrize"></div>
+        </prize>
+
+
+        <ranking id="ranking_list">
+            <rankingtext id="rankingtext">
+                <!--<rankingitem>
+                    <rankingname>u1</rankingname>
+                    <position>1</position>
+                    <mile>1000</mile>
+                </rankingitem>-->
+            </rankingtext>
+            <div class="query_get_award"><a href="http://sale.jd.com/m/act/eNBsPvx4Gog.html"><u>点击查询中奖名单</u></a></div>
+            <rankingok id="ranking_ok"></rankingok>
+            <rankingtoday id="ranking_today_grey"></rankingtoday>
+            <rankinghistory id="ranking_history_grey"></rankinghistory>
+            <rankingtoday id="ranking_today"></rankingtoday>
+            <rankinghistory id="ranking_history"></rankinghistory>
+            <rankingdate id="ranking_date">
+                <rankingtitletext id="ranking_selecteddate"></rankingtitletext>
+            </rankingdate>
+
+            <rankingtitletext id="ranking_totalmiles"></rankingtitletext>
+            <rankingtitletext id="ranking_rank"></rankingtitletext>
+            <rankingleftarrow  id="ranking_leftarrow"></rankingleftarrow>
+            <rankingrightarrow id="ranking_rightarrow"></rankingrightarrow>
+            <rankingpage id="ranking_page"></rankingpage>
+            <rankingdropdown tabindex="0" id="ranking_dropdown">
+                <!--<rdpdateitem data-content="">2015/6/1</rdpdateitem>-->
+            </rankingdropdown>
+        </ranking>
+        <endgame>
+            <div class="go_index_ground end_game_goindex" id="endGameGoIndex"></div>
+            <challenge id="endgame_challenge"></challenge>
+            <trial id="endgame_trial"></trial>
+            <redpacket id="endgame_redpacket"></redpacket>
+            <reward id="endgame_reward"></reward>
+            <shareresult id="endgame_shareresult"></shareresult>
+            <endgamehead id="endgame_messagehead"></endgamehead>
+            <endgamebigtext id="endgame_message1"></endgamebigtext>
+            <endgamebigtext id="endgame_message3"></endgamebigtext>
+            <endgamebigtext id="endgame_message2"></endgamebigtext>
+            <endgamebigtext id="endgame_tip"></endgamebigtext>
+            <endgamemile id="endgame_messagemile"></endgamemile>
+            <!--button_return id="endgame_return"></button_return-->
+
+        </endgame>
+        <rule>
+            <div class="go_index_ground" id="ruleGoIndex"></div>
+            <mod id="messageofday">
+                活动规则：<br>
+                一、活动时间：2015年5月22日00:00至5月30日24:00<br>
+                二、活动说明：<br>
+                1、用户注册/登陆京东移动客户端，参与本游戏，参与游戏用户根据当日游戏总里程进行排名，第1-3000名的用户可获得加油卡，最高4666元；<br>
+                2、每日24点清零当日里程，如若出现里程数一样的情况，率先达到该里程的用户排名靠前;<br>
+                3、参与游戏用户在整个活动期间只可获得一张加油卡的中奖机会，以第一次获得的奖项为准，不可重复获奖，如中奖后中奖用户再次参加游戏进入前3000名，则其名次自动从获奖名单中剔除。<br>
+                三、游戏说明<br>
+                1、参与游戏用户每天默认3次游戏机会，分享至微信后，微信好友进入指定页面点击“为TA加油”按钮，进入联合登陆页面，用户点击登录之后即可为参与游戏用户增加一次游戏机会，每天最多能有7位好友帮忙增加游戏机会（每次游戏机会即为游戏中的1桶燃油）；<br>
+                2、每位用户每天可在易车加油专区加油1次，每次有可能获得3桶、6桶或者12桶燃油，具体请查阅易车加油专区介绍，如有任何问题可与易车联系；<br>
+                3、游戏排行榜数据存在一定时间的延迟。<br>
+                四、加油卡大奖领取方式<br>
+                1、整体游戏结束的30个工作日内，易车工作人员会与获奖用户京东ID帐号所绑定的手机号联系，请中奖用户保持手机畅通，游戏结束后30个工作日内联系不上者视为弃权，将不做任何形式的补偿；<br>
+                2、已完成日期的获奖名单会公布在游戏排行榜页面，该名单会在每日15:00之前更新;<br>
+                3、加油卡由易车工作人员核实获奖用户信息后，根据获奖用户提供的地址免费寄送加油卡或协商后直接向手机充入油卡等值电话费，网友可以自行选择；<br>
+                4、如因获奖用户本人京东ID账号未绑定本人手机号，提交信息有误，或与之前提交信息不匹配，导致未能成功领取获得的奖项，活动主办方将不予承担责任；<br>
+                5、加油卡使用期限、地域，以获奖人实际获取的加油卡所载信息为准；<br>
+                6 、加油卡奖品由易车提供，，如有疑问请致电4000-168-168；<br>
+                五、如遇不可抗力等因素，导致活动无法正常进行时，京东有权取消、终止、修改或暂停本活动。<br>
+                六、京东不会以任何方式索要您的银行账号、密码等信息，请注意安全谨防诈骗。<br>
+                七、 本次活动严禁利用作弊器等一切违反活动规则的作弊行为，对于违背活动公平性的作弊者将直接取消其参赛成绩及获奖资格。<br>
+                八、奖项设置<br>
+                第1名至第3000名用户加油卡奖品由易车网提供：<br>
+                5月22日：<br>
+                第1-50名：每人获得价值4666元油卡1张；<br>
+                第51-100名，每人获得价值3000元油卡1张；<br>
+                第101-500名，每人获得价值500元油卡1张；<br>
+                第501-3000名，每人获得价值100元油卡1张；<br>
+                <br><br>
+                5月23日：<br>
+                第1-50名：每人获得价值4666元油卡1张；<br>
+                第51-100名，每人获得价值3000元油卡1张；<br>
+                第101-500名，每人获得价值300元油卡1张；<br>
+                第501-3000名，每人获得价值100元油卡1张；<br>
+                <br><br>
+                5月24日：<br>
+                第1-50名：每人获得价值4666元油卡1张；<br>
+                第51-100名，每人获得价值1600元油卡1张；<br>
+                第101-500名，每人获得价值300元油卡1张；<br>
+                第501-3000名，每人获得价值100元油卡1张；<br>
+                <br>
+                5月25日：<br>
+                第1-50名：每人获得价值4666元油卡1张；<br>
+                第51-100名，每人获得价值1600元油卡1张；<br>
+                第101-500名，每人获得价值200元油卡1张；<br>
+                第501-3000名，每人获得价值100元油卡1张；<br>
+                <br><br>
+                5月26日：<br>
+                第1-20名：每人获得价值4666元油卡1张；<br>
+                第21-100名，每人获得价值1600元油卡1张；<br>
+                第101-500名，每人获得价值200元油卡1张；<br>
+                第501-3000名，每人获得价值100元油卡1张；<br>
+                <br><br>
+                5月27日：<br>
+                第1-20名：每人获得价值4666元油卡1张；<br>
+                第21-100名，每人获得价值1600元油卡1张；<br>
+                第101-500名，每人获得价值200元油卡1张；<br>
+                第501-3000名，每人获得价值100元油卡1张；<br>
+                <br><br>
+                5月28日：<br>
+                第1-50名：每人获得价值4666元油卡1张；<br>
+                第51-100名，每人获得价值1600元油卡1张；<br>
+                第101-500名，每人获得价值300元油卡1张；<br>
+                第501-3000名，每人获得价值100元油卡1张；<br>
+                <br>
+                5月29日：<br>
+                第1-20名：每人获得价值4666元油卡1张；<br>
+                第21-100名，每人获得价值1200元油卡1张；<br>
+                第101-500名，每人获得价值200元油卡1张；<br>
+                第501-3000名，每人获得价值100元油卡1张；<br>
+                <br><br>
+                5月30日：<br>
+                第1-20名：每人获得价值4666元油卡1张；<br>
+                第21-100名，每人获得价值1200元油卡1张；<br>
+                第101-500名，每人获得价值200元油卡1张；<br>
+                第501-3000名，每人获得价值100元油卡1张；<br>
+
+            </mod>
+        </rule>
+    </topframe>
+
+
+
+</body>
+</html>
