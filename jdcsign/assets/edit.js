@@ -185,7 +185,7 @@ $(function() {
               me.renderImage(result.url, node);
             } else { //avatar
               me.renderCropPopup(result);
-              me.showCrop();
+              me.showCrop(result);
             }
           } else {
             alert(result.msg);
@@ -369,13 +369,24 @@ $(function() {
       me.cropObj.cropW = data.width;
       me.cropObj.cropH = data.height;
     },
-    showCrop: function() {
+    showCrop: function(data) {
       var me = this;
       //jcrop
       if (me.cropObj.jcropApi) {
         me.cropObj.jcropApi.destroy();
       }
+      //select-area
+      var posArr = [0,0,data.width,data.height];
+      if(data.width>data.height){
+        posArr[0] = parseInt((data.width-data.height)/2);
+        posArr[2] = data.height
+      }else{
+        posArr[1] = parseInt((data.height-data.width)/2);
+        posArr[3] = data.width
+      }
+
       $('#J_imgTarget').Jcrop({
+        setSelect:   posArr,
         aspectRatio: 1,
         onChange: me.showCropPreveiw,
         onSelect: me.showCropPreveiw,
