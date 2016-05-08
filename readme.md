@@ -1,3 +1,3 @@
 #JDCtest
 
-test code
+test
