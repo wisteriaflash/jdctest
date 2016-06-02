@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>测试omd方式</title>
+</head>
+<body>
+    <h3>测试omd方式</h3>
+
+
+
+
+    <script src="lib/zepto.js"></script>
+    <script>
+    if(!window.babelGlobal){
+        window.babelGlobal = {};
+    }
+    if(!window.babelComponent){
+        window.babelComponent = {};
+    }
+    </script>
+    <script src="build/component/com_toast.js"></script>
+    <script src="build/global/g_tracking.js"></script>
+    <script src="build/global/g_utils.js"></script>
+    <script src="build/global/g_excStatus.js"></script>
+    <script src="build/global/g_share.js"></script>
+    <script src="build/global/g_header.js"></script>
+
+    <script>
+    console.log(window.babelGlobal,window.babelComponent)
+    </script>
+</body>
+</html>

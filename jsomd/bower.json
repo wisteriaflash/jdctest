@@ -1,0 +1,14 @@
+{
+  "name": "jslog",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "wisteria"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "private": true,
+  "dependencies": {
+    "requirejs": "^2.2.0"
+  }
+}
