@@ -18,105 +18,90 @@ gulp.task('omd-concat', function() {
         .pipe(gulp.dest('./dist/js/'));
 });
 
-//umd
-gulp.task('umd', function() {
-  return gulp.src('global/*.js')
-    .pipe($.umd())
-    .pipe(gulp.dest('build'));
-});
 
-
-
-
-var path = require('path');
-var dependenciesObj = {
-    'g_excStatus': [{
+//dependencies
+var dependItem = {
+    utils: {
         name: 'G_utils',
         amd: './g_utils',
         global: 'babelGlobal.utils'
-    },{
+    },
+    tracking: {
         name: 'G_tracking',
         amd: './g_tracking',
         global: 'babelGlobal.tracking'
-    },{
+    },
+    toast: {
         name: 'toast',
         amd: '../component/com_toast',
         global: 'babelComponent.toast'
-    }],
-    'g_share': [{
-        name: 'G_utils',
-        amd: './g_utils',
-        global: 'babelGlobal.utils'
-    },{
-        name: 'toast',
-        amd: '../component/com_toast',
-        global: 'babelComponent.toast'
-    }],
-    'g_header': [{
-        name: 'G_utils',
-        amd: './g_utils',
-        global: 'babelGlobal.utils'
-    }],
-    'g_tracking': [{
+    },
+    mping: {
         name: 'MPing',
         amd: '//h5.m.jd.com/active/track/mping.min.js',
-        global: 'MPing' 
-    }]
+        global: 'MPing'
+    }
 };
+var dependObj = {
+    'g_excStatus': [dependItem.utils, dependItem.tracking, dependItem.toast],
+    'g_share': [dependItem.utils, dependItem.toast],
+    'g_header': [dependItem.utils],
+    'g_tracking': [dependItem.mping]
+};
+//fileName
+var path = require('path');
+function getFileName(file){
+    return path.basename(file.path, path.extname(file.path));
+}
 function getFormatName(file){
     var filename = path.basename(file.path, path.extname(file.path));
     var formatname = filename.split('_')[1];
     return formatname;
 }
-gulp.task('umd-2', function() {
-  //global
-  gulp.src([
+//umd-fun
+function getUmdFun(type, files){
+    var typeHump = type.replace(/^\S/,function(s){
+        return s.toUpperCase();
+    });
+    return gulp.src(files)
+        .pipe($.replace(/define.*\{/,''))
+        .pipe($.strip({trim: true}))
+        .pipe($.umd({
+            namespace: function(file){
+                return 'babel'+typeHump+'.'+getFormatName(file);
+            },
+            dependencies: function(file){
+                var filename = getFileName(file);
+                var dependArr = dependObj[filename];
+                dependArr = dependArr ? dependArr : [];
+                return dependArr;
+            },
+            template: 'templates/returnExportsAmd.js',
+        }))
+        .pipe($.replace(/}\);\s*\);/,'}));'))
+        .pipe(gulp.dest('build/'+type));
+};
+
+//umd-global
+gulp.task('umd-global', function() {
+    getUmdFun('global',[
         'global/g_utils.js',
         'global/g_tracking.js',
         'global/g_excStatus.js',
         'global/g_share.js',
         'global/g_imglazyload.js',
         'global/g_header.js'
-    ])
-    .pipe($.replace(/define.*\{/,''))
-    .pipe($.strip({trim: true}))
-    .pipe($.umd({
-        namespace: function(file){
-            return 'babelGlobal.'+getFormatName(file);
-        },
-        dependencies: function(file){
-            var filename = path.basename(file.path, path.extname(file.path));
-            var dependArr = dependenciesObj[filename];
-            dependArr = dependArr ? dependArr : [];
-            return dependArr;
-        },
-        template: 'templates/returnExportsAmd.js',
-    }))
-    .pipe($.replace(/}\);\s*\);/,'}));'))
-    .pipe(gulp.dest('build/global'));
+    ]);
 });
 
-//component
-gulp.task('umd-3', function() {
-  return gulp.src([
+////umd-component
+gulp.task('umd-component', function() {
+    getUmdFun('component',[
         'component/com_toast.js'
-    ])
-    .pipe($.replace(/define.*\{/,''))
-    .pipe($.umd({
-        namespace: function(file){
-            return 'babelComponent.'+getFormatName(file);
-        },
-        dependencies: function(file){
-            var filename = path.basename(file.path, path.extname(file.path));
-            var dependArr = dependenciesObj[filename];
-            dependArr = dependArr ? dependArr : [];
-            return dependArr;
-        },
-        template: 'templates/returnExportsAmd.js',
-    }))
-    .pipe($.replace('}););','}));'))
-    .pipe(gulp.dest('build/component'));
+    ]);
 });
+
+
 
 
 

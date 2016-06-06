@@ -5,40 +5,19 @@
     root.babelComponent.toast = factory();
   }
 }(this, function() {
-/*
- * Toast组件
- *
- * 主要功能：主要用于各种状态信息提示等。
- *
- * 表现方式：淡入显示，几秒之后自动淡出。
- *
- * 配置参数：   
- *     @param: content      @type: string   @des: 提示文案
- *     @param: iconCls      @type: string   @des: icon的class名
- *     @param: showTime     @type: number   @des: 显示时间
- * 
- * 方法：
- *     @method  show    @param: options     @des: 配置参数
- *     @method  hide
- */
-
-
     var name = 'toast';
     var optStr = name + 'Opt';
     var instanceStr = name + 'Instance';
 
-    // 创建类
     var Toast = function(item, options) {
         this.element = item;
         this._init(options);
     };
 
-    // 原型方法
     Toast.prototype = {
         version:'1.0.0',
         playID: -1,
         node:   '',
-        // 初始化配置
         _init: function(options) {
             var self = this;
             var item = this.element;
@@ -48,10 +27,8 @@
             var domConfig = self._initDomConfig();
             settings = $.extend({}, settings, domConfig);
             self._setSettings(item, settings);
-            // 渲染
             self._renderHandler();
         },
-        // 初始化dom上的config
         _initDomConfig: function() {
             var self = this;
             var item = this.element;
@@ -65,7 +42,6 @@
             }
             return domConfig;
         },
-        // dom渲染
         _renderHandler: function() {
             var self = this;
             var item = this.element;
@@ -103,11 +79,10 @@
                 settings = $.extend({}, settings, options);
             }
             self._setSettings(item, settings);
-            //conCls
-            self.node.attr('class', 'jdui_toast animated fadeIn');  //reset container
+            self.node.attr('class', 'jdui_toast animated fadeIn');  
             self.node.addClass(settings.conCls);
             self.node.find('.jdui_text').html(settings.content);
-            self.node.find('.jdui_icon').attr('class', 'jdui_icon');    //reset icon
+            self.node.find('.jdui_icon').attr('class', 'jdui_icon');    
             if (settings.iconCls) {
                 self.node.find('.jdui_icon').addClass(settings.iconCls);
             }
@@ -158,7 +133,6 @@
         }
     };
 
-    // 公共方法
     var methods = {
         init: function(options) {
             this.each(function() {
@@ -190,7 +164,7 @@
             }
         }
     };
-    // 实例化
+
     $.fn.toast = function(){
         var method = arguments[0];
         if (methods[method]) {
@@ -209,7 +183,6 @@
         return method.apply(this, arguments);
     };
 
-    // 默认配置
     $.fn.toast.defaults = {
         content:    '提示信息',
         conCls:     '',
@@ -217,7 +190,6 @@
         showTime:   2000
     };
 
-    //exports
     return Toast;
 
 }));
