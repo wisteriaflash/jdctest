@@ -1,9 +1,5 @@
 ;(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define([], factory);
-  } else {
     root.babelComponent.toast = factory();
-  }
 }(this, function() {
     var name = 'toast';
     var optStr = name + 'Opt';

@@ -1,9 +1,5 @@
 ;(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define([], factory);
-  } else {
     root.babelGlobal.imglazyload = factory();
-  }
 }(this, function() {
     function elementInViewport(elem, windowRegion, containerRegion) {
         var me = this;

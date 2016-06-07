@@ -1,9 +1,5 @@
 ;(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['./g_utils'], factory);
-  } else {
     root.babelGlobal.header = factory(root.babelGlobal.utils);
-  }
 }(this, function(G_utils) {
     var header = {
         init: function(config) {

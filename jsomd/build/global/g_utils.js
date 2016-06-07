@@ -1,9 +1,5 @@
 ;(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define([], factory);
-  } else {
     root.babelGlobal.utils = factory();
-  }
 }(this, function() {
     var slice = Array.prototype.slice,
         reges = /\{(\d+?)\}/g,

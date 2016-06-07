@@ -1,8 +1,6 @@
 require([
-    'build/global/global',
-], function(global) {
-    var utils = global.utils;
-    //console
-    console.log('app');
+    'zepto',
+    'global/global',
+], function($, global) {
     console.log(global);
 });

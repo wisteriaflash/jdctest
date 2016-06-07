@@ -1,9 +1,5 @@
 ;(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['./g_utils', '../component/com_toast'], factory);
-  } else {
     root.babelGlobal.share = factory(root.babelGlobal.utils, root.babelComponent.toast);
-  }
 }(this, function(G_utils, toast) {
 	var system = G_utils.runtimeEnv.system;
 	var platform = G_utils.runtimeEnv.webCon; 

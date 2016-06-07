@@ -6,16 +6,23 @@
  * 
  */
 
-define('./global/global',[
+define('./global/global', [
+        './g_header',
         './g_utils',
         './g_imglazyload',
-        './g_excStatus'
-    ], function(G_utils, G_imglazyload, G_excStatus) {
+        './g_excStatus',
+        './g_share',
+        './g_tracking'
+    ], function(G_header, G_utils, G_imglazyload, G_excStatus, G_share, G_tracking) {
+
 
     //return
     return {
+        header: G_header,
         utils : G_utils,
-        imglazyload : G_imglazyload,
-        excStatus: G_excStatus
+        imglazyload: G_imglazyload,
+        excStatus: G_excStatus,
+        share: G_share,
+        tracking: G_tracking
     };
 });

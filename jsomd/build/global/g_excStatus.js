@@ -1,9 +1,5 @@
 ;(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['./g_utils', './g_tracking', '../component/com_toast'], factory);
-  } else {
     root.babelGlobal.excStatus = factory(root.babelGlobal.utils, root.babelGlobal.tracking, root.babelComponent.toast);
-  }
 }(this, function(G_utils, G_tracking, toast) {
 	var httpProtocol = G_utils.protocol;
 	var excStatus = {

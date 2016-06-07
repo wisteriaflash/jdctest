@@ -13,14 +13,12 @@ var require = {
     paths: {
         zepto: 'lib/zepto',
         mustache: '../../bower_components/mustache.js/mustache',
-        fastclick: '../../bower_components/fastclick/lib/fastclick'
+        fastclick: '../../bower_components/fastclick/lib/fastclick',
+        'global/global': 'dist/js/global'
     },
     shim: {
         'zepto': {
             exports: '$'
-        },
-        'build/global/global': {
-            deps: ['zepto']
         }
     }
 };

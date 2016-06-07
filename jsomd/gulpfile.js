@@ -10,14 +10,6 @@ var $ = gulpLoadPlugins({
     }
 });
 
-//js-concat
-gulp.task('omd-concat', function() {
-    return gulp.src(['build/global/*.js', '!build/global/global.js'])
-        .pipe($.concat('global.js'))
-        // .pipe($.uglify())
-        .pipe(gulp.dest('./dist/js/'));
-});
-
 
 //dependencies
 var dependItem = {
@@ -40,13 +32,35 @@ var dependItem = {
         name: 'MPing',
         amd: '//h5.m.jd.com/active/track/mping.min.js',
         global: 'MPing'
+    },
+    //other
+    excStatus: {
+        name: 'G_excStatus',
+        amd: './g_excStatus',
+        global: 'babelGlobal.excStatus'
+    },
+    header: {
+        name: 'G_header',
+        amd: './g_header',
+        global: 'babelGlobal.header'
+    },
+    share: {
+        name: 'G_share',
+        amd: './g_share',
+        global: 'babelGlobal.share'
+    },
+    imglazyload: {
+        name: 'G_imglazyload',
+        amd: './g_imglazyload',
+        global: 'babelGlobal.imglazyload'
     }
 };
 var dependObj = {
     'g_excStatus': [dependItem.utils, dependItem.tracking, dependItem.toast],
     'g_share': [dependItem.utils, dependItem.toast],
     'g_header': [dependItem.utils],
-    'g_tracking': [dependItem.mping]
+    'g_tracking': [dependItem.mping],
+    'global': [dependItem.utils, dependItem.excStatus, dependItem.header, dependItem.imglazyload, dependItem.share, dependItem.tracking]
 };
 //fileName
 var path = require('path');
@@ -55,7 +69,12 @@ function getFileName(file){
 }
 function getFormatName(file){
     var filename = path.basename(file.path, path.extname(file.path));
-    var formatname = filename.split('_')[1];
+    var formatname = '';
+    if(filename.match('_')){
+        formatname = filename.split('_')[1];
+    }else{
+        formatname = filename;
+    }
     return formatname;
 }
 //umd-fun
@@ -102,9 +121,47 @@ gulp.task('umd-component', function() {
 });
 
 
+//js-concat
+var buildSrc = 'build/';
+gulp.task('omd-concat', function() {
+    return gulp.src([
+            buildSrc+'global/g_utils.js',
+            buildSrc+'global/g_tracking.js',
+            buildSrc+'global/g_imglazyload.js',
+            buildSrc+'component/com_toast.js',
+            buildSrc+'global/g_excStatus.js',
+            buildSrc+'global/g_share.js',
+            buildSrc+'global/g_header.js'
+        ])
+        .pipe($.concat('global-native.js'))
+        // .pipe($.uglify())
+        .pipe(gulp.dest('./dist/js/'));
+});
 
-
-
+//rjs
+gulp.task('rjs', function() {
+    // return gulp.src([
+    //         'global/global.js',
+    //     ])
+    //     .pipe($.requirejsOptimize({
+    //         mainConfigFile: 'require-config.js',
+    //         // name: 'demo',
+    //         // exclude: [
+    //         //     'zepto'
+    //         // ]
+    //     }))
+    //     .pipe(gulp.dest('dist/js/'));
+        gulp.src([
+            'global.js',
+        ])
+        .pipe($.requirejsOptimize({
+            mainConfigFile: 'require-config.js',
+            exclude: [
+                'zepto'
+            ]
+        }))
+        .pipe(gulp.dest('dist/js/'));
+});
 
 
 

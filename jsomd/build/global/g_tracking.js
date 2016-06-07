@@ -1,9 +1,5 @@
 ;(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['//h5.m.jd.com/active/track/mping.min.js'], factory);
-  } else {
     root.babelGlobal.tracking = factory(root.MPing);
-  }
 }(this, function(MPing) {
 	var trackings = {
 		winH: $(window).height(),
