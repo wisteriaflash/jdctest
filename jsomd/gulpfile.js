@@ -125,6 +125,7 @@ gulp.task('umd-component', function() {
 var buildSrc = 'build/';
 gulp.task('omd-concat', function() {
     return gulp.src([
+            buildSrc+'global/global.js',
             buildSrc+'global/g_utils.js',
             buildSrc+'global/g_tracking.js',
             buildSrc+'global/g_imglazyload.js',
@@ -134,23 +135,12 @@ gulp.task('omd-concat', function() {
             buildSrc+'global/g_header.js'
         ])
         .pipe($.concat('global-native.js'))
-        // .pipe($.uglify())
+        .pipe($.uglify())
         .pipe(gulp.dest('./dist/js/'));
 });
 
 //rjs
 gulp.task('rjs', function() {
-    // return gulp.src([
-    //         'global/global.js',
-    //     ])
-    //     .pipe($.requirejsOptimize({
-    //         mainConfigFile: 'require-config.js',
-    //         // name: 'demo',
-    //         // exclude: [
-    //         //     'zepto'
-    //         // ]
-    //     }))
-    //     .pipe(gulp.dest('dist/js/'));
         gulp.src([
             'global.js',
         ])
