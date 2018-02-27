@@ -156,7 +156,7 @@ var countdown = {
     radius: 4,
     marginTop: 60,
     marginLeft: 30,
-    endTime: new Date(2015,3,17,11,10,52),
+    endTime: new Date(2018,0,30,11,10,52),
     curShowTimeSeconds: 0,
     //fun
     init: function() {
