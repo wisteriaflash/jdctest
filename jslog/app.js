@@ -41,7 +41,7 @@ define('./parser/par_dataload', [
             var url = 'http://nbingsoa.m.jd.care/h5BabelGenericChannel';
             var pageType = global.pageType;
             if(pageType == 'dev'){
-                url = '../data/test.json';    
+                url = '../data/test.json';
             }
             var dataType = url.match('.json') ? 'json' : 'jsonp';
             var param = {
