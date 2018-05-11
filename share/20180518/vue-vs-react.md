@@ -3,7 +3,7 @@
 ### 一、 组件与数据流
 * 文件结构
 	* Vue：style标签 + template标签 + script标签
-	* React：jsx/js
+	* React：jsx / js
 
 	
 * 父子组件通信
@@ -14,6 +14,7 @@
 #### Vue [代码示例](http://jsfiddle.net/wisteriaflash/b0a0m72c/)
 
 ```vue
+<style lang="scss" src="demo.scss"></style>
 <template>
   <h2>Todos:</h2>
   <ol>
@@ -56,6 +57,9 @@ export default {
 #### React [代码示例](https://jsfiddle.net/wisteriaflash/nc9qwy5L/)
 
 ```jsx
+import React, { Component } from 'react';
+import './demo.scss';
+
 class TodoApp extends React.Component {
   constructor(props) {
     super(props)
@@ -103,6 +107,8 @@ class TodoApp extends React.Component {
 ### Vue2.0
 
 ### React
+
+![图片示例](img/lifeCycle.png)
 
 ### 三、 数据更新
 #### Vue - $set
