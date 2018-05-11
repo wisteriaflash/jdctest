@@ -108,7 +108,7 @@ class TodoApp extends React.Component {
 
 ### React
 
-![图片示例](img/lifeCycle.png)
+![图片示例](img/LifeCycle.png)
 
 ### 三、 数据更新
 #### Vue - $set
