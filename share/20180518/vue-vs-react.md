@@ -103,10 +103,33 @@ class TodoApp extends React.Component {
 ### 二、 生命周期
 
 ### Vue1.0
+* created
+* beforeCompile
+* compiled
+* ready
+* beforeDestory
+* destroyed
 
 ### Vue2.0
+* beforeCreate
+* created
+* beforeMount
+* mounted
+* beforeDestroy
+* destroyed
 
 ### React
+* getDefaultProps
+* getInitialState
+* componentWillMount
+* render
+* componentDidMount
+* componentWillReceiveProps
+	* shouldComponentUpdate
+	* componentWillUpdate
+	* render
+	* componentDidUpdate
+* componentWillUnmount
 
 ![图片示例](img/LifeCycle.png)
 
