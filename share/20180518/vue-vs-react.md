@@ -1,12 +1,12 @@
 # Vue vs React
 
 ### 一、 组件与数据流
-* 文件结构
+* **文件结构**
 	* Vue：style标签 + template标签 + script标签
 	* React：jsx / js
 
 	
-* 父子组件通信
+* **父子组件通信**
 	* Vue：双向数据绑定，v-model来双向绑定变量
 	* React：单向数据流，props传递数据到子组件，再通过props中的callback来回调父组件方法
 
@@ -107,7 +107,7 @@ class TodoApp extends React.Component {
 * beforeCompile
 * compiled
 * ready
-* beforeDestory
+* beforeDestroy
 * destroyed
 
 ### Vue2.0
@@ -134,31 +134,176 @@ class TodoApp extends React.Component {
 ![图片示例](img/LifeCycle.png)
 
 ### 三、 数据更新
-#### Vue - $set
+#### Vue - $set [代码示例](https://jsfiddle.net/wisteriaflash/49n7g33f/)
+
+```vue
+<template>
+<div id="app">
+  <h2>{{title.name}}</h2>
+  <p>tips:{{title.des}}</p>
+  <ol>
+    <li v-for="todo in todos">
+      <label>
+        <input type="checkbox"
+          v-on:change="toggle(todo)"
+          v-bind:checked="todo.done">
+
+        <del v-if="todo.done">
+          {{ todo.text }}
+        </del>
+        <span v-else>
+          {{ todo.text }}
+        </span>
+      </label>
+    </li>
+  </ol>
+</div>
+</template>
+<script>
+export default {
+  data: {
+    todos: [
+      { text: "Learn JavaScript", done: false },
+      { text: "Learn Vue", done: false },
+      { text: "Play around in JSFiddle", done: true },
+      { text: "Build something awesome", done: true }
+    ],
+    /* title: {
+      name: '',
+      des: '',
+    } */
+  },
+  ready(){
+  	this.todos.push({text:'aaa', done: false});
+    this.title = {
+    	name: 'Todos',
+      des: 'This is some todo list',
+    }
+  },
+  methods: {
+  	toggle: function(todo){
+    	todo.done = !todo.done
+    }
+  }
+}
+</script>
+```
 
 
-#### React - setState
-
-
+#### React - setState [代码示例](https://jsfiddle.net/wisteriaflash/qsfe10gv/)
+```jsx
+class TodoApp extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+    	items: [
+      	{ text: "Learn JavaScript", done: false },
+        { text: "Learn React", done: false },
+        { text: "Play around in JSFiddle", done: true },
+        { text: "Build something awesome", done: true }
+      ]
+    }
+  }
+  
+  componentDidMount(){
+  	setTimeout(() => {
+    	this.setState({items: [{
+      	text: 'change text', done: false
+      }]});
+    }, 2000);
+  }
+  
+  render() {
+    return (
+      <div>
+        <h2>Todos:</h2>
+        <ol>
+        {this.state.items.map(item => (
+          <li key={item.id}>
+            <label>
+              <input type="checkbox" disabled readOnly checked={item.done} /> 
+              <span className={item.done ? "done" : ""}>{item.text}</span>
+            </label>
+          </li>
+        ))}
+        </ol>
+      </div>
+    )
+  }
+}
+```
 
 ### 四、模板与jsx
+ * Vue: template是写在单文件组件中的，使用了基于 HTML 的模版语法
+ * React: 放弃了模板而发明了JSX，通过render渲染方法，将 JSX + inline style + DOM写在了一起
 
+#### Vue
+```vue
+<template>
+<ol>
+	<li v-for="todo in todos">
+	  <label>
+	    <input type="checkbox"
+	      v-on:change="toggle(todo)"
+	      v-bind:checked="todo.done">
+	
+	    <del v-if="todo.done">
+	      {{ todo.text }}
+	    </del>
+	    <span v-else>
+	      {{ todo.text }}
+	    </span>
+	  </label>
+	</li>
+</ol>
+</template>
+```
+
+#### React
+```jsx
+render() {
+    return (
+      <div>
+        <h2>Todos:</h2>
+        <ol>
+        {this.state.items.map(item => (
+          <li key={item.id}>
+            <label>
+              <input type="checkbox" disabled readOnly checked={item.done} /> 
+              <span className={item.done ? "done" : ""}>{item.text}</span>
+            </label>
+          </li>
+        ))}
+        </ol>
+      </div>
+    )
+  }
+```
 
 ### 五、监听数据变更
-* React: `componentWillReceiveProps` - 属性更新
 * Vue: `watch`
+* React: `componentWillReceiveProps` - 属性更新
 
-### 五、事件处理
-* React: 在props中配置事件的callback
+#### Vue
+
+
+#### React
+
+
+### 六、事件处理
 * Vue: 通过emit派发事件，然后在父组件中监听事件
+* React: 在props中配置事件的callback
 
-### 五、列表渲染
-* React: 使用map方法来渲染，注意绑定key值
+
+### 七、列表渲染
 * Vue: 使用v-for来渲染
+* React: 使用map方法来渲染，注意绑定key值
 
-### 六、过度动画
-* React：可以自行选择动画库，例如`react-transition-group`
+
+### 八、过渡动画
 * Vue：提供了`transition `的封装组件
+* React：可以自行选择动画库，例如`react-transition-group`
+
 
 
 
