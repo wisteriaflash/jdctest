@@ -54,7 +54,7 @@ export default {
 </script>
 ```
 
-#### React [代码示例](https://jsfiddle.net/wisteriaflash/nc9qwy5L/)
+#### React [代码示例](https://jsfiddle.net/wisteriaflash/nc9qwy5L/2/)
 
 ```jsx
 import React, { Component } from 'react';
@@ -134,7 +134,7 @@ class TodoApp extends React.Component {
 ![图片示例](img/LifeCycle.png)
 
 ### 三、 数据更新
-#### Vue - $set [代码示例](https://jsfiddle.net/wisteriaflash/49n7g33f/)
+#### Vue - $set [代码示例](https://jsfiddle.net/wisteriaflash/49n7g33f/9/)
 
 ```vue
 <template>
@@ -219,20 +219,20 @@ class TodoApp extends React.Component {
 ```vue
 <template>
 <ol>
-	<li v-for="todo in todos">
-	  <label>
-	    <input type="checkbox"
-	      v-on:change="toggle(todo)"
-	      v-bind:checked="todo.done">
-	
-	    <del v-if="todo.done">
-	      {{ todo.text }}
-	    </del>
-	    <span v-else>
-	      {{ todo.text }}
-	    </span>
-	  </label>
-	</li>
+  <li v-for="todo in todos">
+    <label>
+      <input type="checkbox"
+        v-on:change="toggle(todo)"
+        v-bind:checked="todo.done">
+
+      <del v-if="todo.done">
+        {{ todo.text }}
+      </del>
+      <span v-else>
+        {{ todo.text }}
+      </span>
+    </label>
+  </li>
 </ol>
 </template>
 ```
@@ -259,13 +259,137 @@ render() {
 ```
 
 ### 五、监听数据变更
-* Vue: `watch`
-* React: `componentWillReceiveProps` - 属性更新
+* Vue: `watch`监听变量
+* React: 表单完全受控，
 
-#### Vue
+#### Vue [代码示例](https://jsfiddle.net/wisteriaflash/uq2af1nr/1/)
+```vue
+<template>
+<div id="app">
+  <h2>Todos:</h2>
+  <input v-model="text" />
+  <span>{{showText}}</span>
+</div>
+</template>
+<script>
+export default {
+  data: {
+  	text: '',
+    showText: 'show: '
+  },
+  watch: {
+  	text(value){
+    	this.showText = 'show: ' + value;
+    }
+  },
+  methods: {
+  	toggle: function(todo){
+    	todo.done = !todo.done
+    }
+  }
+}
+</script>
+```
 
+#### React [代码示例](https://jsfiddle.net/wisteriaflash/uq2af1nr/2/)
+```jsx
+class TodoApp extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+    	value: '',
+      listData: [{
+      	name: 'a1'
+      },{
+      	name: ''
+      }, {
+      	name: 'a3'
+      }]
+    }
+    // bind
+    this.handleChange = this.handleChange.bind(this);
+  }
+  
+ 
+ componentDidMount(){
+ 	const {listData} = this.state;
+  const moreData = [{
+  	name: 'a4'
+  }, {
+  	name: ''
+  }]
+  const newListData = listData.concat(moreData);
+  
+  
+  setTimeout(() => {
+		this.setState({
+      listData: newListData
+    });
+  }, 2000);
+ }
+  
+  handleChange(e){
+  	const value = e.target.value;
+    this.setState({value});
+  }
+  
+  render() {
+  	const {value, listData} = this.state;
+  
+    return (
+      <div>
+        <h2>Todos:</h2>
+        <input
+          value={value}
+          onChange={this.handleChange}
+        />
+        {value && <span>show: {value}</span>}
+        <TodoList data={listData} />
+      </div>
+    )
+  }
+}
 
-#### React
+class TodoList extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+    	data: this.filterData(props.data)
+    }
+  }
+    
+  componentWillReceiveProps(nextProps){
+  	if('data' in nextProps){
+    	const newData = this.filterData(nextProps.data);
+      this.setState({data: newData});
+    }
+  }
+  
+  filterData(data){
+  	const newData = [];
+  	data.forEach((item) => {
+    	if(item.name){
+      	newData.push(item);
+      }
+		})
+    return newData;
+  }
+  
+  render() {
+		const {data} = this.state;
+  
+    return (
+			<ul>
+			  {data.map((item, index) => (
+        	<li key={item.name}>{index+1}、 {item.name}</li>
+        ))}
+			</ul>
+    )
+  }
+}
+
+ReactDOM.render(<TodoApp />, document.querySelector("#app"));
+```
 
 
 ### 六、事件处理
