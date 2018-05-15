@@ -141,50 +141,28 @@ class TodoApp extends React.Component {
 <div id="app">
   <h2>{{title.name}}</h2>
   <p>tips:{{title.des}}</p>
-  <ol>
-    <li v-for="todo in todos">
-      <label>
-        <input type="checkbox"
-          v-on:change="toggle(todo)"
-          v-bind:checked="todo.done">
-
-        <del v-if="todo.done">
-          {{ todo.text }}
-        </del>
-        <span v-else>
-          {{ todo.text }}
-        </span>
-      </label>
-    </li>
-  </ol>
 </div>
 </template>
 <script>
 export default {
   data: {
-    todos: [
-      { text: "Learn JavaScript", done: false },
-      { text: "Learn Vue", done: false },
-      { text: "Play around in JSFiddle", done: true },
-      { text: "Build something awesome", done: true }
-    ],
+    title: {
+    	name: 'ToDo -- a：'
+    },
     /* title: {
       name: '',
       des: '',
     } */
   },
   ready(){
-  	this.todos.push({text:'aaa', done: false});
-    this.title = {
-    	name: 'Todos',
+     /* this.title = {
+      name: 'Todos',
       des: 'This is some todo list',
-    }
+         } */
+    this.title.name = 'ToDo -- b';
+    this.title.des = 'This is some todo list';
+    //this.$set('title', {name: 'ToDo -- c', des: 'This is some todo list'});
   },
-  methods: {
-  	toggle: function(todo){
-    	todo.done = !todo.done
-    }
-  }
 }
 </script>
 ```
