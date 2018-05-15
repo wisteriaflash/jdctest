@@ -297,45 +297,45 @@ class TodoApp extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-    	value: '',
+      value: '',
       listData: [{
-      	name: 'a1'
-      },{
-      	name: ''
+        name: 'a1'
       }, {
-      	name: 'a3'
+        name: ''
+      }, {
+        name: 'a3'
       }]
     }
     // bind
     this.handleChange = this.handleChange.bind(this);
   }
-  
- 
- componentDidMount(){
- 	const {listData} = this.state;
-  const moreData = [{
-  	name: 'a4'
-  }, {
-  	name: ''
-  }]
-  const newListData = listData.concat(moreData);
-  
-  
-  setTimeout(() => {
-		this.setState({
-      listData: newListData
-    });
-  }, 2000);
- }
-  
-  handleChange(e){
-  	const value = e.target.value;
-    this.setState({value});
+
+
+  componentDidMount() {
+    const { listData } = this.state;
+    const moreData = [{
+      name: 'a4'
+    }, {
+      name: ''
+    }]
+    const newListData = listData.concat(moreData);
+
+
+    setTimeout(() => {
+      this.setState({
+        listData: newListData
+      });
+    }, 2000);
   }
-  
+
+  handleChange(e) {
+    const value = e.target.value;
+    this.setState({ value });
+  }
+
   render() {
-  	const {value, listData} = this.state;
-  
+    const { value, listData } = this.state;
+
     return (
       <div>
         <h2>Todos:</h2>
@@ -354,36 +354,36 @@ class TodoList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-    	data: this.filterData(props.data)
+      data: this.filterData(props.data)
     }
   }
-    
-  componentWillReceiveProps(nextProps){
-  	if('data' in nextProps){
-    	const newData = this.filterData(nextProps.data);
-      this.setState({data: newData});
+
+  componentWillReceiveProps(nextProps) {
+    if ('data' in nextProps) {
+      const newData = this.filterData(nextProps.data);
+      this.setState({ data: newData });
     }
   }
-  
-  filterData(data){
-  	const newData = [];
-  	data.forEach((item) => {
-    	if(item.name){
-      	newData.push(item);
+
+  filterData(data) {
+    const newData = [];
+    data.forEach((item) => {
+      if (item.name) {
+        newData.push(item);
       }
-		})
+    })
     return newData;
   }
-  
+
   render() {
-		const {data} = this.state;
-  
+    const { data } = this.state;
+
     return (
-			<ul>
-			  {data.map((item, index) => (
-        	<li key={item.name}>{index+1}、 {item.name}</li>
+      <ul>
+        {data.map((item, index) => (
+          <li key={item.name}>{index + 1}、 {item.name}</li>
         ))}
-			</ul>
+      </ul>
     )
   }
 }
