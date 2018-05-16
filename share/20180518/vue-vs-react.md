@@ -274,17 +274,17 @@ render() {
 <script>
 export default {
   data: {
-  	text: '',
+    text: '',
     showText: 'show: '
   },
   watch: {
-  	text(value){
-    	this.showText = 'show: ' + value;
+    text(value) {
+      this.showText = 'show: ' + value;
     }
   },
   methods: {
-  	toggle: function(todo){
-    	todo.done = !todo.done
+    toggle: function (todo) {
+      todo.done = !todo.done
     }
   }
 }
@@ -393,18 +393,169 @@ ReactDOM.render(<TodoApp />, document.querySelector("#app"));
 
 
 ### 六、事件处理
-* Vue: 通过emit派发事件，然后在父组件中监听事件
-* React: 在props中配置事件的callback
+* Vue: 通过`$emit`派发事件，然后在父组件中监听事件
+* React: 触发在`props`中配置事件的`callback`
+
+### Vue [代码示例](https://jsfiddle.net/wisteriaflash/nfg7rLwq/)
+```html
+<!-- 子组件模板 -->
+<template id="child-template">
+  <input v-model="msg">
+  <button v-on:click="notify">Dispatch Event</button>
+</template>
+<!-- 父组件模板 -->
+<div id="events-example">
+  <p>Messages: {{ messages | json }}</p>
+  <child @child-msg="handleIt"></child>
+</div>
+```
+```js
+// 注册子组件
+// 将当前消息派发出去
+Vue.component('child', {
+  template: '#child-template',
+  data: function () {
+    return { msg: 'hello' }
+  },
+  methods: {
+    notify: function () {
+      if (this.msg.trim()) {
+        this.$emit('child-msg', this.msg)
+        this.msg = ''
+      }
+    }
+  }
+})
+// 初始化父组件
+// 将收到消息时将事件推入一个数组
+var parent = new Vue({
+  el: '#events-example',
+  data: {
+    messages: []
+  },
+  methods: {
+  	handleIt(msg) {
+    	this.messages.push(msg);
+    }
+  }
+})
+```
+
+
+### React [代码示例](https://jsfiddle.net/wisteriaflash/2ufa2035/)
+```jsx
+class TodoApp extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      items: [
+        { text: "Learn JavaScript", done: false },
+        { text: "Learn React", done: false },
+        { text: "Play around in JSFiddle", done: true },
+        { text: "Build something awesome", done: true }
+      ],
+      back: [],
+    }
+    //bind
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(items) {
+    this.setState({ back: items });
+  }
+
+  componentDidMount() {
+    this.handleChange(this.state.items);
+  }
+
+  render() {
+    return (
+      <div>
+        <h2>Todos:</h2>
+        <TodoList
+          data={this.state.items}
+          onChange={this.handleChange}
+        />
+        <h2>Select items:：</h2>
+        {this.state.back.map((item) => {
+          if (!item.done) {
+            return <span className="tag">{item.text}</span>
+          } else {
+            return null;
+          }
+        })}
+      </div>
+    )
+  }
+}
+
+
+class TodoList extends React.Component {
+  constructor(props) {
+    super()
+    this.state = {
+      data: props.data,
+    }
+    // bind
+    this.toggleCheck = this.toggleCheck.bind(this);
+  }
+
+  toggleCheck(item) {
+    const { onChange } = this.props;
+    item.done = !item.done;
+    this.setState({ data: this.state.data }, () => {
+      // callback
+      if (onChange) {
+        onChange(this.state.data)
+      }
+    });
+
+  }
+
+  render() {
+    const { data } = this.state;
+
+    return (
+      <ol>
+        {data.map(item => (
+          <li key={item.name}>
+            <label>
+              <input type="checkbox" checked={item.done}
+                onChange={() => {
+                  this.toggleCheck(item);
+                }}
+              />
+              <span className={item.done ? "done" : ""}>{item.text}</span>
+            </label>
+          </li>
+        ))}
+      </ol>
+    )
+  }
+}
+```
 
 
 ### 七、列表渲染
 * Vue: 使用v-for来渲染
 * React: 使用map方法来渲染，注意绑定key值
 
+#### Vue [代码示例](https://jsfiddle.net/wisteriaflash/b0a0m72c/)
+
+
+#### React [代码示例](https://jsfiddle.net/wisteriaflash/nc9qwy5L/2/)
+
+
 
 ### 八、过渡动画
 * Vue：提供了`transition `的封装组件
 * React：可以自行选择动画库，例如`react-transition-group`
+
+
+### Vue
+
+
+### React
 
 
 
