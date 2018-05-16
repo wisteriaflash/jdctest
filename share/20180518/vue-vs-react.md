@@ -538,12 +538,15 @@ class TodoList extends React.Component {
 
 ### 七、列表渲染
 * Vue: 使用v-for来渲染
-* React: 使用map方法来渲染，注意绑定key值
+* React: 使用map方法来循环，注意绑定的key值
 
 #### Vue [代码示例](https://jsfiddle.net/wisteriaflash/b0a0m72c/)
 
 
 #### React [代码示例](https://jsfiddle.net/wisteriaflash/nc9qwy5L/2/)
+
+key值的绑定：
+[级联选择-Cascader](http://mo.jd.com/jdc/spirit/dist/#/page/components/casecader)
 
 
 
@@ -552,30 +555,67 @@ class TodoList extends React.Component {
 * React：可以自行选择动画库，例如`react-transition-group`
 
 
-### Vue
+### Vue [代码示例](https://jsfiddle.net/wisteriaflash/jps0makk/)
+
+```vue
+<style>
+body {
+  background: #20262E;
+  padding: 20px;
+  font-family: Helvetica;
+}
+.expand-transition {
+  transition: all .3s ease;
+  height: 30px;
+  padding: 10px;
+  background-color: #eee;
+  overflow: hidden;
+}
+.expand-enter, .expand-leave {
+  height: 0;
+  padding: 0 10px;
+  opacity: 0;
+}
+</style>
+<template>
+<div v-if="show" transition="expand">hello</div>
+<br/>
+<button @click="toggle">toggle</button>
+</template>
+<scirpt>
+export default {
+	data: {
+    show: true
+  },
+  methods: {
+  	toggle: function(){
+    	this.show = !this.show;
+    }
+  }
+}
+</script>
+```
+
+### React [示例](https://codesandbox.io/s/m77l2vp00x?from-embed)
+
+* [react-transition-group](https://reactcommunity.org/react-transition-group/css-transition)
+* [react-motion](https://github.com/chenglou/react-motion)
+* data-show： [react-move](https://github.com/react-tools/react-move)
 
 
-### React
 
-
-
-
-### 其他 - 共同点
-* 使用 Virtual DOM (Vue2.0)
+### 两者的共同点
+* 都使用 Virtual DOM (Vue2.0)
 * 提供了响应式（Reactive）和组件化（Composable）的视图组件。
 * 将注意力集中保持在核心库，伴随于此，有配套的路由和负责处理全局状态管理的库。
 
 
-
-
   
-### 组件演示：select
-
-[示例](http://mo.jd.com/jdc/spirit/dist/#/page/components/select)
-
-[ant-design](https://ant.design/components/select-cn/)
-[element](http://element.eleme.io/#/zh-CN/component/select)
+### 组件演示：select [示例](http://mo.jd.com/jdc/spirit/dist/#/page/components/select)
 
 
+* [ant-design](https://ant.design/components/select-cn/)
+* [element](http://element.eleme.io/#/zh-CN/component/select)
+
+#### 优化点：
 * 列表显示的方向动画：通过更改`transform-origin`来实现方向的变更
-* 其他
