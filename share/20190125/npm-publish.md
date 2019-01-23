@@ -81,6 +81,11 @@ $ npm dist-tag add demo@beta latest
 $ npm info
 ```
 
+## [lerna](https://lernajs.io/) - 发布多个包工具
+* lerna.json的配置：https://github.com/lerna/lerna#concepts
+* lerna publish：发布命令
+
+
 # jnpm - [文档](http://npm.m.jd.com/)
 ## 重要提示
 jnpm 用户名和密码跟erp无关联。
