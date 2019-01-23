@@ -1,6 +1,6 @@
 # npm发布
 
-## 提示
+## 提示
 npm发布依赖[package.json](package.json.md)，请确保package.json中内容正确，否则即使npm发布，亦无法使用。
 
 > 下面以模块名 `demo` 为例
@@ -81,7 +81,7 @@ $ npm dist-tag add demo@beta latest
 $ npm info
 ```
 
-# jnpm - [文档](http://npm.m.jd.com/)
+# jnpm - [文档](http://npm.m.jd.com/)
 ## 重要提示
 jnpm 用户名和密码跟erp无关联。
 
